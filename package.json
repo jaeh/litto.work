@@ -1,0 +1,46 @@
+{
+  "name": "wizardsatwork.github.io",
+  "version": "0.23.5",
+  "author": "Wizards & Witches",
+  "license": "AGPL-3.0",
+  "contributors": [
+    {
+      "name": "jascha ehrenreich",
+      "github": "jaeh"
+    },
+    {
+      "name": "philipp tiefenbacher",
+      "github": "wizard23"
+    },
+    {
+      "name": "tom peak",
+      "github": "tompeak"
+    },
+    {
+      "name": "phileas lebada",
+      "github": "norpol"
+    },
+    {
+      "name": "litto",
+      "github": "mslitto"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wizardsatwork/wizardsatwork.at.git"
+  },
+  "scripts": {
+    "start": "mspg build",
+    "build": "NODE_ENV=production mspg build noWatch noServe zip",
+    "build:serve": "NODE_ENV=production mspg build noWatch zip",
+    "clean": "rm -rf public",
+    "lint:css": "mspg lint css",
+    "lint:html": "mspg lint html",
+    "publish": "NODE_ENV=production mspg build zip publish noWatch noServe"
+  },
+  "devDependencies": {
+    "@mspg/core": "github:mspg/core",
+    "@mspg/transpile-pug": "github:mspg/transpile-pug",
+    "@mspg/transpile-stylus": "github:mspg/transpile-stylus"
+  }
+}
