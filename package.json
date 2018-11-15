@@ -1,5 +1,5 @@
 {
-  "name": "wizardsatwork.github.io",
+  "name": "litto.work",
   "version": "0.23.5",
   "author": "Wizards & Witches",
   "license": "AGPL-3.0",
@@ -9,25 +9,13 @@
       "github": "jaeh"
     },
     {
-      "name": "philipp tiefenbacher",
-      "github": "wizard23"
-    },
-    {
-      "name": "tom peak",
-      "github": "tompeak"
-    },
-    {
-      "name": "phileas lebada",
-      "github": "norpol"
-    },
-    {
       "name": "litto",
       "github": "mslitto"
     }
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/wizardsatwork/wizardsatwork.at.git"
+    "url": "https://github.com/jaeh/portfolio.git"
   },
   "scripts": {
     "start": "mspg build",
