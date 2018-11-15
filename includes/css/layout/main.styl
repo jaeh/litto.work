@@ -1,0 +1,65 @@
+*
+  box-sizing border-box
+
+body
+  color $text-color
+  font-family 'Ubuntu Condensed', 'Segoe UI', roboto, 'Lucida Grande', 'Helvetica Neue', Helvetica, Arial, sans-serif
+  font-size 15px
+  line-height 1.2
+  max-width 1200px
+  margin 0 auto
+
+h1,
+h2
+  margin 0 0 1em
+
+h1
+  font-size 1.5em
+
+h2
+  font-size 1.2em
+
+h3
+  font-size 1.3em
+  margin 1em 0 .5em
+
+img
+  max-height 100%
+  max-width 100%
+
+a
+  color $text-color
+  text-decoration none
+
+  &:hover
+    text-decoration underline
+
+ul.nav
+  li
+    display block
+
+.header,
+.footer
+  &.main
+    position fixed
+    left auto
+    right 10px
+
+.header.main
+  top 10px
+  z-index 10000
+
+.footer.main
+  top auto 
+  bottom 10px
+  z-index 10000
+
+#drop
+  height 100%
+  width 100%
+  display block
+  position fixed
+
+img.drag
+  position absolute
+  z-index 0
