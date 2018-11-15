@@ -16,8 +16,8 @@ a:hover{text-decoration:underline;}
 ul.nav li{display:block;}
 .header.main, .footer.main{position:fixed; left:auto; right:10px;}
 .header.main{top:10px; z-index:10000;}
-.footer.main{top:auto; bottom:10px; z-index:10000;}
-#drop{height:100%; width:100%; display:block; position:fixed;}
+.footer.main{top:auto; bottom:10px; z-index:1000000;}
+.draggables{-webkit-user-select:none; -moz-user-select:none; -ms-user-select:none; user-select:none;}
 img.drag{position:absolute; z-index:0;}
 @media (min-width:600px){main section{font-size:2vw; }}
 @media (min-width:700px){body{font-size:18px; }}
