@@ -11,6 +11,30 @@ function hasCl(e, cl) {
   return e.className.indexOf(cl) > -1
 }
 
+
+function addCl(e, cl) {
+  if (!hasCl(e, cl)) {
+    e.className = e.className ? e.className + ' ' + cl : cl
+  }
+}
+
+function rmCl(e, cl) {
+  if (hasCl(e, cl)) {
+    if (e.className.indexOf(' ' + cl) > -1) {
+      cl = ' ' + cl
+    }
+    e.className = e.className.replace(cl, '')
+  }
+}
+
+function toggleCl(e, cl) {
+  if (hasCl(e, cl)) {
+    rmCl(e, cl)
+  } else {
+    addCl(e, cl)
+  }
+}
+
 function doNothing(e) {
   e.preventDefault()
   return false
@@ -41,6 +65,7 @@ function drag(ev) {
 
   document.onmousemove = mousemove
   document.onmouseup = drop
+  document.onmouseout = drop
 }
 
 function drop(ev) {
@@ -98,6 +123,22 @@ for(var i = 0; i < images.length; i++) {
     
     if (hasCl(img, 'drag')) {
       img.addEventListener('mousedown', drag)
+      img.addEventListener('touchstart', function(e) {
+        e.stopPropagation()
+        drag(e)
+      })
     }
   }
 }
+
+
+// Menu
+var menuContainer = document.getElementsByClassName('nav')[0]
+var active = menuContainer.getElementsByClassName('active')[0]
+
+console.log(active)
+active.addEventListener('click', function(e) {
+  e.preventDefault()
+  console.log('click')
+  toggleCl(menuContainer, 'show')
+})

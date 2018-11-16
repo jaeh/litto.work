@@ -13,7 +13,10 @@ h3{font-size:1.3em; margin:1em 0 0.5em;}
 img{max-height:100%; max-width:100%;}
 a{color:#4527a0; text-decoration:none;}
 a:hover{text-decoration:underline;}
-ul.nav li{display:block;}
+ul.nav{font-size:2em;}
+ul.nav li{display:block; opacity:0; -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)"; filter:alpha(opacity=0); height:0; width:0; overflow:hidden; -webkit-transition:all 500ms; transition:all 500ms;}
+ul.nav li.active{opacity:1; -ms-filter:none; -webkit-filter:none; filter:none; width:auto; height:auto;}
+ul.nav.show li{opacity:1; -ms-filter:none; -webkit-filter:none; filter:none; height:auto; width:auto; -webkit-transition:all 500ms; transition:all 500ms;}
 .header.main, .footer.main{position:fixed; left:auto; right:10px;}
 .header.main{top:10px; z-index:10000;}
 .footer.main{top:auto; bottom:10px; z-index:1000000;}
