@@ -3,14 +3,21 @@ var DROP = 'drop'
 var dragged = false
 var startPos = false
 var currentZIndex = 1
-var images = document.getElementsByTagName('img')
+var draggableContainer = document.getElementsByClassName('draggables')[0]
 var draggables = document.getElementsByClassName('drag')
 var maxZIndex = draggables.length * 5
+
+function forEach(items, fn) {
+  for (var i = 0; i < items.length; i++) {
+    if (items.hasOwnProperty(i)) {
+      fn(items[i])
+    }
+  }
+}
 
 function hasCl(e, cl) { 
   return e.className.indexOf(cl) > -1
 }
-
 
 function addCl(e, cl) {
   if (!hasCl(e, cl)) {
@@ -48,9 +55,15 @@ function getPos(e) {
   return parseInt(e.replace('px', ''))
 }
 
+function isOutOfBounds(e) {
+  return e.clientX >= window.innerWidth 
+    || e.clientX <= 0 
+    || e.clientY >= window.innerHeight 
+    || e.clientY <= 0
+}
+
 function drag(ev) {
-  console.log('drag')
-  dragged = ev.target
+  dragged = ev.currentTarget
   startPos = {
     left: getPos(dragged.style.left),
     top: getPos(dragged.style.top),
@@ -63,31 +76,46 @@ function drag(ev) {
   }
   dragged.style.opacity = 0.8
 
-  document.onmousemove = mousemove
-  document.onmouseup = drop
-  document.onmouseout = drop
+  draggableContainer.addEventListener('mousemove', mousemove)
+  draggableContainer.addEventListener('mouseup', drop)
+  draggableContainer.addEventListener('mouseout', function(e) {
+    if (isOutOfBounds(e)) {
+      drop(e)
+    } 
+  })
 }
 
 function drop(ev) {
+  if (!dragged) {
+    return
+  }
+
   if (startPos) {
     var endPos = {
-      left: getPos(ev.target.style.left),
-      top: getPos(ev.target.style.top),
+      left: getPos(dragged.style.left),
+      top: getPos(dragged.style.top),
     }
     
     if (startPos.left === endPos.left && startPos.top === endPos.top) {
-      console.log('click')
+      // console.log('click')
     } else {
-      console.log('drop')
+      // console.log('drop')
     }
+
+    forEach(draggables, function(ele) {
+      rmCl(ele, 'dropped')
+    })
+    addCl(dragged, 'dropped')
   }
+
   dragged.style.opacity = 1
 
   dragged = false
   startPos = false
 
-  document.onmousemove = null
-  document.onmouseup = null
+  document.onmousemove = function () {}
+  document.onmouseup = function () {}
+  document.onmouseout = function () {}
 }
 
 function mousemove(ev) {
@@ -116,20 +144,16 @@ function mousemove(ev) {
   }
 }
 
-for(var i = 0; i < images.length; i++) {
-  if (images.hasOwnProperty(i)) {
-    var img = images[i]
-    img.addEventListener('dragstart', doNothing)
-    
-    if (hasCl(img, 'drag')) {
-      img.addEventListener('mousedown', drag)
-      img.addEventListener('touchstart', function(e) {
-        e.stopPropagation()
-        drag(e)
-      })
-    }
-  }
+function makeDraggable(ele) {
+  ele.addEventListener('dragstart', doNothing)
+  ele.addEventListener('mousedown', drag)
+  ele.addEventListener('touchstart', function(e) {
+    e.stopPropagation()
+    drag(e)
+  })
 }
+
+forEach(draggables, makeDraggable)
 
 
 // Menu
@@ -142,8 +166,10 @@ function toggleMenu(e) {
   return false
 }
 
-active.addEventListener('click', toggleMenu)
-active.addEventListener('touchstart', function(e) {
-  e.stopPropagation()
-  toggleMenu(e)
-})
+if (active) {
+  active.addEventListener('click', toggleMenu)
+  active.addEventListener('touchstart', function(e) {
+    e.stopPropagation()
+    toggleMenu(e)
+  })
+}
