@@ -1,5 +1,14 @@
 extends /page.pug
 
+block menu
+  ul.nav
+    li.active
+      a(href=`${WEB_ROOT}`) 2018
+    li
+      a(href=`${WEB_ROOT}2017`) 2017
+    li 
+      a(href='') 201&le;
+
 block content
   .draggables
     #drop
