@@ -12,6 +12,11 @@ block menu
 block content
   .draggables
     #drop
-    img.drag(style="left: 20px; top: 50px" src=`${WEB_ROOT}img/2018/2018-1.png`)
+    div.drag(style="left: 20px; top: 50px")
+      h2.title 
+        a(href=`${WEB_ROOT}details/image-1`) title
+
+      img(src=`${WEB_ROOT}img/2018/2018-1.png`)
+
     img.drag(style="left: 50px; top: 150px" src=`${WEB_ROOT}img/2018/2018-2.png`)
     img.drag(style="left: 120px; top: 0px" src=`${WEB_ROOT}img/2018/2018-3.png`)
