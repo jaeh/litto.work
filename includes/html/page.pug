@@ -30,14 +30,14 @@ html(lang='en')
   body(id='♥')
     .header.main
      block menu
-        ul.nav
-          li
-            a(href=`${WEB_ROOT}`) 2018
-          li 
-            a(href=`${WEB_ROOT}2017`) 2017
-          li 
-            a(href=`${WEB_ROOT}201x`) 201&le;
-            
+      ul.nav
+        li.active
+          a(href=`${WEB_ROOT}`) 2018
+        li 
+          a(href=`${WEB_ROOT}2017`) 2017
+        li 
+          a(href=`${WEB_ROOT}201x`) 201&le;
+
     .main
       block content
         div no content
