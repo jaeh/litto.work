@@ -136,9 +136,14 @@ for(var i = 0; i < images.length; i++) {
 var menuContainer = document.getElementsByClassName('nav')[0]
 var active = menuContainer.getElementsByClassName('active')[0]
 
-console.log(active)
-active.addEventListener('click', function(e) {
+function toggleMenu(e) {
   e.preventDefault()
-  console.log('click')
   toggleCl(menuContainer, 'show')
+  return false
+}
+
+active.addEventListener('click', toggleMenu)
+active.addEventListener('touchstart', function(e) {
+  e.stopPropagation()
+  toggleMenu(e)
 })
