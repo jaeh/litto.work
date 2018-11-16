@@ -80,3 +80,20 @@ ul.nav
   position absolute
   z-index 0
 
+  .title
+    position absolute
+    top 0
+    left 0
+    background-color black
+    opacity 0
+    width 100%
+    padding 0.2em
+    height 0
+    width 0
+
+  &.dropped
+    .title 
+      opacity 1
+      height auto
+      width auto
+  
