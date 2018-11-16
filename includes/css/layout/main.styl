@@ -35,8 +35,27 @@ a
     text-decoration underline
 
 ul.nav
+  font-size 2em
+  
   li
     display block
+    opacity 0
+    height 0
+    width 0
+    overflow hidden
+    transition all 500ms
+    
+    &.active
+      opacity 1
+      width auto
+      height auto
+
+  &.show
+    li
+      opacity 1
+      height auto
+      width auto
+      transition all 500ms
 
 .header,
 .footer
@@ -60,3 +79,4 @@ ul.nav
 img.drag
   position absolute
   z-index 0
+
