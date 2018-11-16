@@ -21,7 +21,9 @@ ul.nav.show li{opacity:1; -ms-filter:none; -webkit-filter:none; filter:none; hei
 .header.main{top:10px; z-index:10000;}
 .footer.main{top:auto; bottom:10px; z-index:1000000;}
 .draggables{-webkit-user-select:none; -moz-user-select:none; -ms-user-select:none; user-select:none;}
-img.drag{position:absolute; z-index:0;}
+.drag{position:absolute; z-index:0;}
+.drag .title{position:absolute; top:0; left:0; background-color:#000; opacity:0; -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)"; filter:alpha(opacity=0); width:100%; padding:0.2em; height:0; width:0;}
+.drag.dropped .title{opacity:1; -ms-filter:none; -webkit-filter:none; filter:none; height:auto; width:auto;}
 @media (min-width:600px){main section{font-size:2vw; }}
 @media (min-width:700px){body{font-size:18px; }}
 @media (min-width:800px){.projects{display:inline-block; } .projects .project{float:left; width:31%; margin:0 1%; }}
