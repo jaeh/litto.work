@@ -18,13 +18,14 @@
     "url": "https://github.com/jaeh/portfolio.git"
   },
   "scripts": {
-    "start": "mspg build",
+    "start": "mspg build serve watch",
     "build": "NODE_ENV=production mspg build noWatch noServe zip",
-    "build:serve": "NODE_ENV=production mspg build noWatch zip",
+    "build:serve": "NODE_ENV=production mspg build serve zip",
     "clean": "rm -rf public",
     "lint:css": "mspg lint css",
     "lint:html": "mspg lint html",
-    "publish": "NODE_ENV=production mspg build zip publish noWatch noServe"
+    "connect": "mspg connect",
+    "publish": "NODE_ENV=production mspg build zip publish"
   },
   "devDependencies": {
     "@mspg/core": "github:mspg/core",
