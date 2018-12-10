@@ -3,18 +3,20 @@
   <head>
     <meta charset="utf-8">
     <title>litto @ work</title>
-    <link rel="icon" href="/favicon.ico">
+    <link rel="icon" href="{{ WEB_ROOT }}favicon.ico">
     <meta name="description" content="litto's portfolio">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <link rel="stylesheet" href="/main.css">
+    <link rel="stylesheet" href="{{ WEB_ROOT }}main.css">
   </head>
   <body>
     <div class="header main">
-      <ul class="nav">
-        <li class="active"><a href="/">2018</a></li>
-        <li><a href="/2017">2017</a></li>
-        <li><a href="/201x">201&le;</a></li>
-      </ul>
+      <block name="menu">
+        <ul class="nav">
+          <li class="active"><a href="{{ WEB_ROOT }}">2018</a></li>
+          <li><a href="{{ WEB_ROOT }}2017">2017</a></li>
+          <li><a href="{{ WEB_ROOT }}201x">201&le;</a></li>
+        </ul>
+      </block>
     </div>
 
     <div class="main">
@@ -22,8 +24,8 @@
     </div>
 
     <div class="footer main">
-      <img src="/img/litto.png">
+      <img src="{{ WEB_ROOT }}img/litto.png">
     </div>
-    <script src="/js/index.js"></script>
+    <script src="{{ WEB_ROOT }}js/index.js"></script>
   </body>
 </html>
