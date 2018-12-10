@@ -1,16 +1,23 @@
-extends /page.pug
+<extends src="page.html">
+  <block name="menu">
+    <ul class="nav">
+      <li class="active">
+        <a href="{{WEB_ROOT}}2017">2017</a>
+      </li>
+      <li> 
+        <a href="{{WEB_ROOT}}">2018</a>
+      </li>
+      <li> 
+        <a href="{{WEB_ROOT}}201x">201&le;</a>
+      </li>
+    </ul>
+  </block>
 
-block menu
-  ul.nav
-    li.active
-      a(href=`${WEB_ROOT}2017`) 2017
-    li 
-      a(href=`${WEB_ROOT}`) 2018
-    li 
-      a(href=`${WEB_ROOT}/201x`) 201&le;
-
-block content
-  .draggables
-    img.drag(style="left: 20px; top: 50px" src=`${WEB_ROOT}img/2018/2018-1.png`)
-    img.drag(style="left: 50px; top: 150px" src=`${WEB_ROOT}img/2018/2018-2.png`)
-    img.drag(style="left: 120px; top: 0px" src=`${WEB_ROOT}img/2018/2018-3.png`)
+  <block name="content">
+    <div class="draggables">
+      <img class="drag" style="left: 20px; top: 50px" src="{{WEB_ROOT}}img/2018/2018-1.png" />
+      <img class="drag" style="left: 50px; top: 150px" src="{{WEB_ROOT}}img/2018/2018-2.png" />
+      <img class="drag" style="left: 120px; top: 0px" src="{{WEB_ROOT}}img/2018/2018-3.png" />
+    </div>
+  </block>
+</extends>
