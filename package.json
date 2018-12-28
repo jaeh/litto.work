@@ -25,11 +25,15 @@
     "lint:css": "mspg lint css",
     "lint:html": "mspg lint html",
     "connect": "mspg connect",
-    "publish": "NODE_ENV=production mspg publish"
+    "publish": "NODE_ENV=production mspg publish",
+    "format": "f -w"
   },
   "devDependencies": {
     "@mspg/core": "github:mspg/core",
     "@mspg/transpile-posthtml": "github:mspg/transpile-posthtml",
     "@mspg/transpile-stylus": "github:mspg/transpile-stylus"
+  },
+  "dependencies": {
+    "@magic/test": "0.0.2"
   }
 }

@@ -1,7 +1,9 @@
-extends /page.pug
+<extends src="page.html">
+  <block name="title">
+    <title>404 page</title>
+  </block>
 
-block title
-  title 404 page
-
-block content
-  #error404 404 - not found
+  <block name="content">
+    <div id="error404">404 - not found</div>
+  </block>
+</extends>

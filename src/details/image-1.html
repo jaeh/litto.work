@@ -1,11 +1,13 @@
-extends /single.pug
+<extends src="single.html">
 
-block menu
-  ul.nav.show
-    li
-      a(href=`${WEB_ROOT}`) &lt; 
+  <block name="menu">
+    <ul class="nav show">
+      <li><a href="{{ WEB_ROOT }}">&lt;</a></li>
+    </ul>
+  </block>
 
-
-block content
-  h2 title
-  img(src=`${WEB_ROOT}img/2018/2018-1.png`)
+  <block name="content">
+    <h2>titel 1</h2>
+    <img src="{{ WEB_ROOT }}img/2018/2018-1.png" />
+  </block>
+</extends>
