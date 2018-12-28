@@ -1,5 +1,4 @@
 var DROP = 'drop'
-
 var dragged = false
 var startPos = false
 var currentZIndex = 1
@@ -15,7 +14,7 @@ function forEach(items, fn) {
   }
 }
 
-function hasCl(e, cl) { 
+function hasCl(e, cl) {
   return e.className.indexOf(cl) > -1
 }
 
@@ -56,10 +55,12 @@ function getPos(e) {
 }
 
 function isOutOfBounds(e) {
-  return e.clientX >= window.innerWidth 
-    || e.clientX <= 0 
-    || e.clientY >= window.innerHeight 
-    || e.clientY <= 0
+  return (
+    e.clientX >= window.innerWidth ||
+    e.clientX <= 0 ||
+    e.clientY >= window.innerHeight ||
+    e.clientY <= 0
+  )
 }
 
 function drag(ev) {
@@ -77,11 +78,13 @@ function drag(ev) {
   dragged.style.opacity = 0.8
 
   draggableContainer.addEventListener('mousemove', mousemove)
+  draggableContainer.addEventListener('touchmove', mousemove)
   draggableContainer.addEventListener('mouseup', drop)
+  draggableContainer.addEventListener('touchend', drop)
   draggableContainer.addEventListener('mouseout', function(e) {
     if (isOutOfBounds(e)) {
       drop(e)
-    } 
+    }
   })
 }
 
@@ -95,7 +98,7 @@ function drop(ev) {
       left: getPos(dragged.style.left),
       top: getPos(dragged.style.top),
     }
-    
+
     if (startPos.left === endPos.left && startPos.top === endPos.top) {
       // console.log('click')
     } else {
@@ -113,9 +116,9 @@ function drop(ev) {
   dragged = false
   startPos = false
 
-  document.onmousemove = function () {}
-  document.onmouseup = function () {}
-  document.onmouseout = function () {}
+  document.onmousemove = function() {}
+  document.onmouseup = function() {}
+  document.onmouseout = function() {}
 }
 
 function mousemove(ev) {
@@ -133,7 +136,7 @@ function mousemove(ev) {
     }
 
     dragged.style.left = newLeft + 'px'
-    
+
     var newTop = ev.clientY - dragged.offset.top
     if (newTop < 0) {
       newTop = 0
@@ -154,7 +157,6 @@ function makeDraggable(ele) {
 }
 
 forEach(draggables, makeDraggable)
-
 
 // Menu
 var menuContainer = document.getElementsByClassName('nav')[0]
