@@ -25,7 +25,7 @@
     "lint:css": "mspg lint css",
     "lint:html": "mspg lint html",
     "connect": "mspg connect",
-    "publish": "NODE_ENV=production mspg build zip publish"
+    "publish": "NODE_ENV=production mspg publish"
   },
   "devDependencies": {
     "@mspg/core": "github:mspg/core",
