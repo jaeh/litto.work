@@ -15,9 +15,69 @@ const forEach = (items, fn) => {
   }
 }
 
+// resize and reposition after load of images
+
+const onload = par => e => {
+  if (cl.has(e.target, 'bg')) {
+    const tar = e.target
+    let width = tar.naturalWidth
+    let height = tar.naturalHeight
+    let left = 0
+    let top = 0
+
+    // resize if too wide
+    const maxWidth = window.innerWidth * .7
+    if (width > maxWidth) {
+      const widthPercent = (width / maxWidth) + .1
+      width /= widthPercent
+      height /= widthPercent
+    }
+
+    // resize if too high
+    const maxHeight = window.innerHeight * .7
+    if (height > maxHeight) {
+      const heightPercent = (height / maxHeight) + .1
+      height /= heightPercent
+      width /= heightPercent
+    }
+
+    par.style.height = `${height}px`
+    par.style.width = `${width}px`
+
+    const maxLeft = window.innerWidth - width
+    const maxTop = window.innerHeight - height
+    left = Math.random() * maxLeft
+    top = Math.random() * maxTop
+    left = `${Math.floor(percentFromPixels('Width', left))}%`
+    top = `${Math.floor(percentFromPixels('Height', top))}%`
+
+    par.style.left = left
+    par.style.top = top
+  }
+}
+
+forEach(draggables, d => {
+  const ran = Math.random()
+  const pos = {
+    left: '100%',
+    top: '100%',
+  }
+
+  if (ran > 0.7) {
+    pos.left = `-${pos.left}`
+  } else if (ran < 0.3) {
+    pos.top = `-${pos.top}`
+  }
+
+  d.style.left = pos.left
+  d.style.top = pos.top
+  const img = d.getElementsByClassName('bg')[0]
+  img.addEventListener('load', onload(d))
+})
+
 const cl = {
   has(e, cl) {
-    return e.className.indexOf(cl) > -1
+    return e.className && e.className.indexOf(cl) > -1
   },
   add(e, c) {
     if (!cl.has(e, c)) {
@@ -81,12 +141,10 @@ const drop = () => {
     return
   }
 
-  if (startPos) {
-    forEach(draggables, function(ele) {
-      cl.rm(ele, 'dropped')
-    })
-    cl.add(dragged, 'dropped')
-  }
+  forEach(draggables, function(ele) {
+    cl.rm(ele, 'dropped')
+  })
+  cl.add(dragged, 'dropped')
 
   dragged.style.opacity = 1
 
