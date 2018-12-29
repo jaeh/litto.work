@@ -11,6 +11,7 @@ body
   line-height 1.2
   max-width 1200px
   margin 0 auto
+  background-color $body-background-color
 
 h1,
 h2
@@ -20,21 +21,33 @@ h1
   font-size 1.5em
 
 h2
-  font-size 1.2em
+  font-size 2.5em
+  font-weight normal
+  letter-spacing 0.09em
+  text-transform uppercase
+  margin 0 0 1em
+  padding 0 0 .5em
+  border-bottom 3px solid #666666
 
 h3
-  font-size 1.3em
-  margin 1em 0 .5em
+  text-transform uppercase
+  line-height 1.5
+  font-size 1.2em
+  font-style italic
+  font-weight 200
+  color #777
+  margin 0 0 1em
 
 img
   max-height 100%
   max-width 100%
 
 a
-  color $text-color
+  color $link-color
   text-decoration none
 
   &:hover
+    color $link-hover-color
     text-decoration underline
 
 ul.nav
@@ -59,6 +72,16 @@ ul.nav
       height auto
       width auto
       transition all 500ms
+
+.wrapper
+  padding-bottom 5em
+
+  > div:first-child
+    color #333
+    padding 5% 5%
+
+  > div:nth-child(2)
+    padding 10% 5% 0
 
 .header,
 .footer
@@ -105,8 +128,8 @@ ul.nav
       fill white
 
 @media (min-width: 600px)
-  main
-    section
+  .main
+    .section
       font-size 2vw
 @media (min-width: 700px)
   body
@@ -121,3 +144,75 @@ ul.nav
       float left
       width 31%
       margin 0 1%
+
+
+.videoWrapper
+  height 0
+  position relative
+  padding-bottom 56.25% /* 16:9 */
+
+  iframe
+    background-color #f2f2f2
+    height 100%
+    left 0
+    position absolute
+    top 0
+    width 100%
+
+.backBtn
+  font-size 2em
+  color black
+  position fixed
+  top 0
+  right 2%
+
+.intro
+  font-style italic
+  font-weight 200
+  color #777
+
+.intro2
+  line-height 1.5
+  font-size 3em
+  font-family 'Ubuntu', sans-serif
+  font-style italic
+  font-weight 200
+  color #777
+
+  span
+    margin 0
+    padding 0
+    display block
+
+.content
+  font-family 'Ubuntu', sans-serif
+  font-style regular
+  color #666
+  font-size 0.85em
+  line-height 1.5
+
+  p
+    margin-top: 10
+    margin-bottom: 0
+
+.uppercase
+  text-transform uppercase
+.bold
+  font-weight bold
+
+.ellipsis
+  text-indent 3em
+
+.pagination
+  margin-top 20px
+  margin-bottom 0
+  padding-left 30%
+  font-size 0.8em
+
+.link
+  color #666
+  font-size 0.75em
+  text-decoration none
+  font-weight medium
+  font-family 'Ubuntu', sans-serif
+  line-height 1.5

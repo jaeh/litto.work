@@ -72,7 +72,9 @@ forEach(draggables, d => {
   d.style.left = pos.left
   d.style.top = pos.top
   const img = d.getElementsByClassName('bg')[0]
-  img.addEventListener('load', onload(d))
+  if (img) {
+    img.addEventListener('load', onload(d))
+  }
 })
 
 const cl = {
