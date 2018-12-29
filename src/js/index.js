@@ -45,7 +45,10 @@ const doNothing = (e) => {
 
 const $ = str => document.getElementById(str)
 
-const getPos = e => parseInt(e.replace('px', ''))
+const getPos = e => parseInt(e.replace('%', ''))
+
+const percentFromPixels = (direction, px) => (px / window[`inner${direction}`]) * 100
+const pixelsFromPercent = (direction, pc) => (pc * window[`inner${direction}`]) / 100
 
 const isOutOfBounds = e => (
   e.clientX >= window.innerWidth ||
@@ -57,14 +60,14 @@ const isOutOfBounds = e => (
 const drag = ev => {
   dragged = ev.currentTarget
   startPos = {
-    left: getPos(dragged.style.left),
-    top: getPos(dragged.style.top),
+    left: pixelsFromPercent('Width', getPos(dragged.style.left)),
+    top: pixelsFromPercent('Height', getPos(dragged.style.top)),
   }
   currentZIndex += 1
   dragged.style.zIndex = currentZIndex
   dragged.offset = {
-    left: ev.clientX - getPos(dragged.style.left),
-    top: ev.clientY - getPos(dragged.style.top),
+    left: ev.clientX - pixelsFromPercent('Width', getPos(dragged.style.left)),
+    top: ev.clientY - pixelsFromPercent('Height', getPos(dragged.style.top)),
   }
   dragged.style.opacity = 0.8
 
@@ -116,7 +119,7 @@ const mousemove = ev => {
       newLeft = max.left
     }
 
-    dragged.style.left = newLeft + 'px'
+    dragged.style.left = `${percentFromPixels('Width', newLeft)}%`
 
     let newTop = ev.clientY - dragged.offset.top
     if (newTop < 0) {
@@ -124,7 +127,7 @@ const mousemove = ev => {
     } else if (newTop > max.top) {
       newTop = max.top
     }
-    dragged.style.top = newTop + 'px'
+    dragged.style.top = `${percentFromPixels('Height', newTop)}%`
   }
 }
 

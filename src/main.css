@@ -1,6 +1,123 @@
 @import 'nib'
 global-reset()
 
-@import '/layout/main'
-@import '/layout/tablet'
-@import '/layout/desktop'
+*
+  box-sizing border-box
+
+body
+  color $text-color
+  font-family 'Ubuntu Condensed', 'Segoe UI', roboto, 'Lucida Grande', 'Helvetica Neue', Helvetica, Arial, sans-serif
+  font-size 15px
+  line-height 1.2
+  max-width 1200px
+  margin 0 auto
+
+h1,
+h2
+  margin 0 0 1em
+
+h1
+  font-size 1.5em
+
+h2
+  font-size 1.2em
+
+h3
+  font-size 1.3em
+  margin 1em 0 .5em
+
+img
+  max-height 100%
+  max-width 100%
+
+a
+  color $text-color
+  text-decoration none
+
+  &:hover
+    text-decoration underline
+
+ul.nav
+  font-size 2em
+
+  li
+    display block
+    opacity 0
+    height 0
+    width 0
+    overflow hidden
+    transition all 500ms
+
+    &.active
+      opacity 1
+      width auto
+      height auto
+
+  &.show
+    li
+      opacity 1
+      height auto
+      width auto
+      transition all 500ms
+
+.header,
+.footer
+  &.main
+    position fixed
+    left auto
+    right 10px
+
+.header.main
+  top 10px
+  z-index 10000
+
+.footer.main
+  top auto
+  bottom 10px
+  z-index 1000000
+
+.draggables
+  user-select none
+
+.drag
+  position absolute
+  z-index 0
+
+  svg
+    fill #ffffff
+    stroke-width 1em
+    stroke #666666
+
+  a
+    position absolute
+    top 37%
+    left 37%
+    opacity 0
+    height 0
+    width 0
+    transition height 500ms, width 500ms, opacity 500ms
+
+  &.dropped
+    a
+      opacity 1
+      height 25%
+      width 25%
+      fill white
+
+@media (min-width: 600px)
+  main
+    section
+      font-size 2vw
+@media (min-width: 700px)
+  body
+    font-size 18px
+
+
+@media (min-width: 800px)
+  .projects
+    display inline-block
+
+    .project
+      float left
+      width 31%
+      margin 0 1%
