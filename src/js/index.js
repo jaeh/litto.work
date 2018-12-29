@@ -1,69 +1,60 @@
-var DROP = 'drop'
-var dragged = false
-var startPos = false
-var currentZIndex = 1
-var draggableContainer = document.getElementsByClassName('draggables')[0]
-var draggables = document.getElementsByClassName('drag')
-var maxZIndex = draggables.length * 5
+const draggableContainer = document.getElementsByClassName('draggables')[0]
+const draggables = document.getElementsByClassName('drag')
+const maxZIndex = draggables.length * 5
 
-function forEach(items, fn) {
-  for (var i = 0; i < items.length; i++) {
+// global app state
+let dragged = false
+let startPos = false
+let currentZIndex = 1
+
+const forEach = (items, fn) => {
+  for (let i = 0; i < items.length; i++) {
     if (items.hasOwnProperty(i)) {
       fn(items[i])
     }
   }
 }
 
-function hasCl(e, cl) {
-  return e.className.indexOf(cl) > -1
-}
-
-function addCl(e, cl) {
-  if (!hasCl(e, cl)) {
-    e.className = e.className ? e.className + ' ' + cl : cl
-  }
-}
-
-function rmCl(e, cl) {
-  if (hasCl(e, cl)) {
-    if (e.className.indexOf(' ' + cl) > -1) {
-      cl = ' ' + cl
+const cl = {
+  has(e, cl) {
+    return e.className.indexOf(cl) > -1
+  },
+  add(e, c) {
+    if (!cl.has(e, c)) {
+      e.className = e.className ? e.className + ' ' + c : c
     }
-    e.className = e.className.replace(cl, '')
-  }
+  },
+  rm(e, c) {
+    if (cl.has(e, c)) {
+      e.className = e.className.replace(c, '').trim()
+    }
+  },
+  toggle: (e, c) => {
+    if (cl.has(e, c)) {
+      cl.rm(e, c)
+    } else {
+      cl.add(e, c)
+    }
+  },
 }
 
-function toggleCl(e, cl) {
-  if (hasCl(e, cl)) {
-    rmCl(e, cl)
-  } else {
-    addCl(e, cl)
-  }
-}
-
-function doNothing(e) {
+const doNothing = (e) => {
   e.preventDefault()
   return false
 }
 
-function $(str) {
-  return document.getElementById(str)
-}
+const $ = str => document.getElementById(str)
 
-function getPos(e) {
-  return parseInt(e.replace('px', ''))
-}
+const getPos = e => parseInt(e.replace('px', ''))
 
-function isOutOfBounds(e) {
-  return (
-    e.clientX >= window.innerWidth ||
-    e.clientX <= 0 ||
-    e.clientY >= window.innerHeight ||
-    e.clientY <= 0
-  )
-}
+const isOutOfBounds = e => (
+  e.clientX >= window.innerWidth ||
+  e.clientX <= 0 ||
+  e.clientY >= window.innerHeight ||
+  e.clientY <= 0
+)
 
-function drag(ev) {
+const drag = ev => {
   dragged = ev.currentTarget
   startPos = {
     left: getPos(dragged.style.left),
@@ -77,58 +68,48 @@ function drag(ev) {
   }
   dragged.style.opacity = 0.8
 
-  draggableContainer.addEventListener('mousemove', mousemove)
-  draggableContainer.addEventListener('touchmove', mousemove)
-  draggableContainer.addEventListener('mouseup', drop)
-  draggableContainer.addEventListener('touchend', drop)
-  draggableContainer.addEventListener('mouseout', function(e) {
-    if (isOutOfBounds(e)) {
-      drop(e)
-    }
-  })
+  document.addEventListener('mousemove', mousemove)
+  document.addEventListener('mouseup', drop)
+  document.addEventListener('mouseout', dropIfOutOfBounds)
 }
 
-function drop(ev) {
+const drop = () => {
   if (!dragged) {
     return
   }
 
   if (startPos) {
-    var endPos = {
-      left: getPos(dragged.style.left),
-      top: getPos(dragged.style.top),
-    }
-
-    if (startPos.left === endPos.left && startPos.top === endPos.top) {
-      // console.log('click')
-    } else {
-      // console.log('drop')
-    }
-
     forEach(draggables, function(ele) {
-      rmCl(ele, 'dropped')
+      cl.rm(ele, 'dropped')
     })
-    addCl(dragged, 'dropped')
+    cl.add(dragged, 'dropped')
   }
 
   dragged.style.opacity = 1
 
+
+  document.removeEventListener('mousemove', mousemove)
+  document.removeEventListener('mouseup', drop)
+  document.removeEventListener('mouseout', dropIfOutOfBounds)
+
   dragged = false
   startPos = false
-
-  document.onmousemove = function() {}
-  document.onmouseup = function() {}
-  document.onmouseout = function() {}
 }
 
-function mousemove(ev) {
+const dropIfOutOfBounds = e => {
+  if (isOutOfBounds(e)) {
+    drop(e)
+  }
+}
+
+const mousemove = ev => {
   if (dragged) {
-    var max = {
+    const max = {
       left: window.innerWidth - dragged.clientWidth,
       top: window.innerHeight - dragged.clientHeight,
     }
 
-    var newLeft = ev.clientX - dragged.offset.left
+    let newLeft = ev.clientX - dragged.offset.left
     if (newLeft < 0) {
       newLeft = 0
     } else if (newLeft > max.left) {
@@ -137,7 +118,7 @@ function mousemove(ev) {
 
     dragged.style.left = newLeft + 'px'
 
-    var newTop = ev.clientY - dragged.offset.top
+    let newTop = ev.clientY - dragged.offset.top
     if (newTop < 0) {
       newTop = 0
     } else if (newTop > max.top) {
@@ -147,7 +128,7 @@ function mousemove(ev) {
   }
 }
 
-function makeDraggable(ele) {
+const makeDraggable = (ele) => {
   ele.addEventListener('dragstart', doNothing)
   ele.addEventListener('mousedown', drag)
   ele.addEventListener('touchstart', function(e) {
@@ -159,12 +140,12 @@ function makeDraggable(ele) {
 forEach(draggables, makeDraggable)
 
 // Menu
-var menuContainer = document.getElementsByClassName('nav')[0]
-var active = menuContainer.getElementsByClassName('active')[0]
+const menuContainer = document.getElementsByClassName('nav')[0]
+const active = menuContainer.getElementsByClassName('active')[0]
 
-function toggleMenu(e) {
+const toggleMenu = e => {
   e.preventDefault()
-  toggleCl(menuContainer, 'show')
+  cl.toggle(menuContainer, 'show')
   return false
 }
 
