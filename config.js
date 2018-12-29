@@ -13,5 +13,5 @@ module.exports = {
     // JS,
   },
   year,
-  WEB_ROOT: 'https://jaeh.github.io/portfolio/',
+  WEB_ROOT: '/litto.work/',
 }
