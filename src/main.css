@@ -59,8 +59,7 @@ a
       fill $link-hover-color-svg
 
 ul.nav
-  font-size 2em
-
+  font-size 1.8em
 
   li
     display block
@@ -74,6 +73,24 @@ ul.nav
       opacity 1
       width auto
       height auto
+
+      a
+        display inline-block
+
+        &::before 
+
+          content: "";
+          border-top: 3px solid $black;
+          display: block;
+          margin: 0 0 0 50%;
+          right: -4px;
+          position: relative;
+
+      .border
+        height 3px
+        width 50%
+        background-color $black
+        float right
 
   &.show
     li
