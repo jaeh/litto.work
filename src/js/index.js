@@ -41,9 +41,6 @@ const onload = par => e => {
       width /= heightPercent
     }
 
-    par.style.height = `${height}px`
-    par.style.width = `${width}px`
-
     const maxLeft = window.innerWidth - width
     const maxTop = window.innerHeight - height
     left = Math.random() * maxLeft
