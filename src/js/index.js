@@ -15,7 +15,6 @@ const forEach = (items, fn) => {
   }
 }
 
-
 const cl = {
   has(e, c) {
     return e.className && e.className.indexOf(c) > -1
@@ -40,7 +39,6 @@ const cl = {
 }
 
 // resize and reposition after load of images
-
 const onload = par => e => {
   if (cl.has(e.target, 'bg')) {
     const tar = e.target
