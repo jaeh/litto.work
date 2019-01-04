@@ -1,54 +1,55 @@
-<extends src="page.html">
+<extends src="single.html">
+  <block name="menu">
+    <a class="backBtn" href="{{ WEB_ROOT }}">
+      <mixin name="pageLink"></mixin>
+    </a>
+  </block>
 
   <block name="content">
-    <div class="wrapper">
-      <div class="left-container">
-        <h1 class="heading">Real Mirror</h1>
-        <a class="backBtn" href="/">x</a>
-        <div class="separator"></div>
+    <h2>Real Mirror</h2> 
+    <div class="left">
 
-        <img src="./img/img_catalogue.png" alt="" />
+      <img src="{{ DIR }}img/img_catalogue.png" alt="" />
 
-        <div class="videoWrapper">
-          <iframe width="1280" height="720" src="https://www.youtube.com/embed/7XrOFWo7Uyw?rel=0&amp;showinfo=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        </div>
-
-        <img src="./img/IMG-6158.jpg" alt="" />
-        <img src="./img/img_equ_01.jpg" alt="" />
-        <img src="./img/IMG-6157.jpg" alt="" />
-        <img src="./img/IMG-6094.jpg" alt="" />
+      <div class="videoWrapper">
+        <iframe width="1280" height="720" src="https://www.youtube.com/embed/7XrOFWo7Uyw?rel=0&amp;showinfo=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </div>
 
-      <div class="right-container">
-        <div class="meta">
-          <p class="intro">WHAT if the medium fails to disappear by using a non-normative way of generating perception, by taking advantage of the error/glitch derived by the medium itself?</p>
-        </div>
-        <div class="content">
-          <p>
-            <small class="lead">Real Mirror</small>
-            is an interactive object that enables users to experiment
-            with new modes of perceiving the body and space.
-            The spatial installation is based on a VR system accessed with a VR headset (Oculus Rift).
-            The interface between body and virtual space
-            is a spherical navigation instrument,
-            which provides a virtual 360° view of the surroundings
-            and reacts to movement impulses of the users.
-            They can navigate freely in the virtual spaces
-            that emerge and must constantly reorient themselves
-            in the complex interplay between physical movement and spatial transformation.
-          </p>
-          <p class="indent">…</p>
-        </div>
+      <img src="{{ DIR }}img/img-6158.jpg">
+      <img src="{{ DIR }}img/img_equ_01.jpg">
+      <img src="{{ DIR }}img/img-6157.jpg">
+      <img src="{{ DIR }}img/img-6094.jpg">
+    </div>
 
-        <div class='link'>
-          <p>
-            <a href="https://digitalekunst.ac.at/fuckreality/" target="utopia">Cooperation: Digital Class // University of Applied Arts Vienna</a>
-          </p>
-          <p>
-            <a href="https://www.kunstraum.net/en/Exhibitions" target="utopia">Exhibition @ Kunstraum Niederösterreich</a>
-          </p>
-        </div>
+    <div class="right">
+      <h3>WHAT if the medium fails to disappear by using a non-normative way of generating perception, by taking advantage of the error/glitch derived by the medium itself?</h3>
+
+      <div class="content">
+        <p>
+          <span class="bold uppercase">Real Mirror</span>
+          is an interactive object that enables users to experiment
+          with new modes of perceiving the body and space.
+          The spatial installation is based on a VR system accessed with a VR headset (Oculus Rift).
+          The interface between body and virtual space
+          is a spherical navigation instrument,
+          which provides a virtual 360° view of the surroundings
+          and reacts to movement impulses of the users.
+          They can navigate freely in the virtual spaces
+          that emerge and must constantly reorient themselves
+          in the complex interplay between physical movement and spatial transformation.
+        </p>
+        <p class="ellipsis">...</p>
+      </div>
+
+      <div class='link'>
+        <p>
+          <a href="https://digitalekunst.ac.at/fuckreality/" target="_blank" rel="nofollow noopener noreferrer">Cooperation: Digital Class // University of Applied Arts Vienna</a>
+        </p>
+        <p>
+          <a href="https://www.kunstraum.net/en/Exhibitions" target="_blank" rel="nofollow noopener noreferrer">Exhibition @ Kunstraum Niederösterreich</a>
+        </p>
       </div>
     </div>
+  </div>
   </block>
 </extends>

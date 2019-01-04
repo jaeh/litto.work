@@ -1,17 +1,48 @@
 <extends src="page.html">
   <block name="menu">
     <ul class="nav">
-      <li class="active"><a href="{{WEB_ROOT}}2017">2017</a></li>
-      <li><a href="{{WEB_ROOT}}">2018</a></li>
-      <li><a href="{{WEB_ROOT}}201x">201&le;</a></li>
+      <li class="active"><a href="{{WEB_ROOT}}2017/">2017</a></li>
+      <li><a href="{{ WEB_ROOT }}">2018</a></li>
+      <li><a href="{{ WEB_ROOT }}201x/">201&le;</a></li>
     </ul>
   </block>
 
   <block name="content">
     <div class="draggables">
-      <img class="drag" style="left: 20px; top: 50px" src="./img/2018/2018-1.png" />
-      <img class="drag" style="left: 50px; top: 150px" src="./img/2018/2018-2.png" />
-      <img class="drag" style="left: 120px; top: 0px" src="./img/2018/2018-3.png" />
+      <div class="drag">
+        <a href="{{ WEB_ROOT }}2017/facedead/">
+          <mixin name="link"></mixin>
+        </a>
+        <img class="bg" src="{{ DIR }}img/facedead.jpg" />
+      </div>
+
+      <div class="drag">
+        <a href="{{ WEB_ROOT }}2017/facemeup/">
+          <mixin name="link"></mixin>
+        </a>
+        <img class="bg" src="{{ DIR }}img/facemeup.jpg" />
+      </div>
+
+      <div class="drag">
+        <a href="{{ WEB_ROOT }}2017/newreality/">
+          <mixin name="link"></mixin>
+        </a>
+        <img class="bg" src="{{ DIR }}img/newreality.gif" />
+      </div>
+
+      <div class="drag">
+        <a href="{{ WEB_ROOT }}2017/restrictedarea/">
+          <mixin name="link"></mixin>
+        </a>
+        <img class="bg" src="{{ DIR }}img/restrictedarea.jpg" />
+      </div>
+
+      <div class="drag">
+        <a href="{{ WEB_ROOT }}2017/dervenus/">
+          <mixin name="link"></mixin>
+        </a>
+        <img class="bg" src="{{ DIR }}img/dervenus.jpg" />
+      </div>
     </div>
   </block>
 </extends>

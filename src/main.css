@@ -1,6 +1,270 @@
 @import 'nib'
 global-reset()
 
-@import '/layout/main'
-@import '/layout/tablet'
-@import '/layout/desktop'
+
+*
+  box-sizing border-box
+
+body
+  color $text-color
+  font-family Ubuntu, sans-serif
+  font-size 15px
+  line-height 1.2
+  max-width 1200px
+  margin 0 auto
+  background-color $body-background-color
+
+h1,
+h2
+  margin 0 0 1em
+
+h1
+  font-size 1.5em
+
+h2
+  font-size 2.2em
+  font-weight normal
+  letter-spacing 0.09em
+  text-transform uppercase
+  margin 0.5em 0 0.2em
+  padding 0 $padding-side .2em
+  border-bottom 2px solid #666666
+
+h3
+  text-transform uppercase
+  line-height 1.5
+  font-size 1.2em
+  font-style italic
+  font-weight 200
+  color $text-color-light
+  margin 0 0 1em
+
+img
+  max-height 100%
+  max-width 100%
+
+a
+  color $link-color
+  text-decoration none
+
+  .arrow
+    fill #ffffff
+  .triangle
+    fill #666666
+
+  &:hover
+    color $link-hover-color
+         
+    .triangle
+      fill $link-hover-color-svg
+
+ul.nav
+  font-size 1.8em
+
+  li
+    display block
+    opacity 0
+    height 0
+    width 0
+    overflow hidden
+    transition all 500ms
+
+    &.active
+      opacity 1
+      width auto
+      height auto
+
+      a
+        display inline-block
+
+        &::before 
+
+          content: "";
+          border-top: 3px solid $black;
+          display: block;
+          margin: 0 0 0 50%;
+          right: -4px;
+          position: relative;
+
+      .border
+        height 3px
+        width 50%
+        background-color $black
+        float right
+
+  &.show
+    li
+      opacity 1
+      height auto
+      width auto
+      transition all 500ms
+  a
+    font-style italic
+    padding 0 .1em 0 0
+
+
+.wrapper
+  padding-bottom 5em
+
+  .left, 
+  .right 
+    img
+      margin 1em 0
+
+  .videoWrapper
+    margin $padding-side 0
+
+  .left,
+  .right
+    color #333
+    margin: 1em 0;
+    padding $padding-side
+
+.header,
+.footer
+  &.main 
+    position fixed
+    left auto
+    right 10px
+
+.header.main
+  top 10px
+  z-index 10000
+
+.footer.main
+  top auto
+  bottom 10px
+  z-index 1000000
+
+.draggables
+  user-select none
+
+.drag
+  position absolute
+  z-index 0
+  transition left 500ms, top 500ms
+
+  &.dragged 
+    transition none
+
+  .bg
+    max-width 45vw
+    max-height 50vh
+
+  a
+    position absolute
+    right 0
+    top 0
+    opacity 0
+    height 0
+    width 0
+    transition opacity 500ms
+
+  &.dropped
+    a
+      opacity 1
+      height 43px
+      width 43px
+
+    .bg
+      box-shadow 0px 0px 10px 5px rgba(0,0,0,0.15)
+
+.videoWrapper
+  height 0
+  position relative
+  padding-bottom 56.25% /* 16:9 */
+
+  iframe
+    background-color #f2f2f2
+    height 100%
+    left 0
+    position absolute
+    top 0
+    width 100%
+
+.pageLink
+  height 45px
+  width 45px
+  right 0
+  top 0
+
+.intro
+  font-style italic
+  font-weight 200
+  color $text-color-light
+
+.intro2
+  line-height 1.5
+  font-size 3em
+  font-family 'Ubuntu', sans-serif
+  font-style italic
+  font-weight 200
+  color $text-color-light
+
+  span
+    margin 0
+    padding 0
+    display block
+
+.content
+  font-family 'Ubuntu', sans-serif
+  font-style regular
+  color #666
+  font-size 0.85em
+  line-height 1.5
+
+  p
+    margin-top: 10
+    margin-bottom: 0
+
+  img
+    margin 1em 0
+
+.uppercase
+  text-transform uppercase
+.bold
+  font-weight bold
+
+.ellipsis 
+  color #666
+
+.pagination
+  margin-top 20px
+  margin-bottom 0
+  padding-left 30%
+  font-size 0.8em
+
+.link
+  color #666
+  font-size 0.75em
+  text-decoration none
+  font-weight medium
+  line-height 1.9em
+
+
+@media (min-width: 600px)
+  .main
+    .section
+      font-size 2vw
+
+@media (min-width: 700px)
+  body
+    font-size 18px
+
+
+@media (min-width: 800px)
+  .projects
+    display inline-block
+
+    .project
+      float left
+      width 31%
+      margin 0 1%
+
+  .left
+    width 50%
+    float left
+
+  .right
+    width 49%
+    float right

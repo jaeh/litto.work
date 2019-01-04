@@ -1,13 +1,32 @@
 <extends src="page.html">
   <block name="content">
     <div class="draggables">
-      <div id="drop"></div>
+      <div class="drag">
+        <a href="{{ WEB_ROOT }}2018/catfeed/">
+          <mixin name="link"></mixin>
+        </a>
+        <img class="bg" src="{{ WEB_ROOT }}2018/img/CatFeed.png" />
+      </div>
 
-      <div class="drag" style="left: 20px; top: 50px">
-        <h2 class="title">
-          <a href="{{ WEB_ROOT }}2018/10secoff">10 Sec Off</a>
-        </h2>
-        <img src="./2018/img/allTargets.png" />
+      <div class="drag">
+        <a href="{{ WEB_ROOT }}2018/realmirror/">
+          <mixin name="link"></mixin>
+        </a>
+        <img class="bg" src="{{WEB_ROOT}}2018/img/RealMirror.png" />
+      </div>
+
+      <div class="drag">
+        <a href="{{ WEB_ROOT }}2018/10secoff/">
+          <mixin name="link"></mixin>
+        </a>
+        <img class="bg" src="{{ WEB_ROOT }}2018/img/10secoff.jpg" />
+      </div>
+
+      <div class="drag">
+        <a href="https://soundframe.at/2018/12/16/translation-complexity-artivive/" target="_blank" rel="noopener nofollow">
+          <mixin name="link"></mixin>
+        </a>
+        <img class="bg" src="{{ WEB_ROOT }}2018/img/singularity.jpg" />
       </div>
 
     </div>

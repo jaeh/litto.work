@@ -1,17 +1,41 @@
 <extends src="page.html">
+  
   <block name="menu">
     <ul class="nav">
-      <li class="active"><a href="{{ WEB_ROOT }}201x">201&le;</a></li>
-      <li><a href="{{WEB_ROOT}2017}">2017</a></li>
-      <li><a href="{{WEB_ROOT}}">2018</a></li>
+      <li class="active"><a href="{{WEB_ROOT}}201x/">201≤</a></li>
+      <li><a href="{{ WEB_ROOT }}">2018</a></li>
+      <li><a href="{{ WEB_ROOT }}2017/">2017</a></li>
     </ul>
   </block>
 
   <block name="content">
     <div class="draggables">
-      <img class="drag" style="left: 20px; top: 50px" src="{{WEB_ROOT}}img/2018/2018-1.png" />
-      <img class="drag" style="left: 50px; top: 150px" src="{{WEB_ROOT}}img/2018/2018-2.png" />
-      <img class="drag" style="left: 120px; top: 0px" src="{{WEB_ROOT}}img/2018/2018-3.png" />
+      <div class="drag">
+        <img class="bg" src="{{ DIR }}img/cyber.jpg" />
+      </div>
+
+      <div class="drag">
+        <img class="bg" src="{{ DIR }}img/daredevil.jpg" />
+      </div>
+
+      <div class="drag">
+        <img class="bg" src="{{ DIR }}img/showoff.jpg" />
+      </div>
+
+      <div class="drag">
+        <a href="https://www.facebook.com/hometownberlin/videos/297655334350951/" target="_blank" rel="noopener nofollow">
+          <mixin name="link"></mixin>
+        </a>
+        <img class="bg" src="{{ DIR }}img/laberlampe.gif" />
+      </div>
+
+      <div class="drag">
+        <a href="https://issuu.com/ssiew/docs/diplom_2005_2013_2" target="_blank" rel="noopener nofollow">
+          <mixin name="link"></mixin>
+        </a>
+        <img class="bg" src="{{ DIR }}img/rushsyndrom.jpg" />
+      </div>
+
     </div>
   </block>
 </extends>

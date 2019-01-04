@@ -1,43 +1,42 @@
-<extends src="page.html">
+<extends src="single.html">
+  <block name="menu">
+    <a class="backBtn" href="{{ WEB_ROOT }}2017/">
+      <mixin name="pageLink"></mixin>
+    </a>
+  </block>
 
   <block name="content">
-    <div class="wrapper">
-      <div class="left-container">
-        <h1 class="heading">FaceMeUp</h1>
-        <a class="backBtn" href="/">x</a>
+    <h2>FaceMeUp</h2>
 
-        <div class="separator"></div>
-          <div class="videoWrapper">
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/1YV6F0BvAmA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-          </div>
-          <img src="./img/selection.png" alt="" />
-        </div>
+    <div class="left">
+      <div class="videoWrapper">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/1YV6F0BvAmA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <img src="{{ DIR }}img/selection.png" alt="" />
+      <img src="{{ DIR }}img/selection2.png" alt="" />
+    </div>
 
-        <div class="right-container">
-          <div class="meta">
-            <p class="intro2">A self portrait for an unspecific period of time</p>
-          </div>
+    <div class="right">
+      <h3>A self portrait existing in an unspecified period of time</h3>
 
-          <div class="content">
-            <p>
-              <small class="lead">Single Frames</small><br>
-              digital art, stop motion<br>
-              DIN A3<br>
-              Augmented Reality
-            </p>
+      <div class="content">
+        <p>
+          <span class="bold uppercase">Single Frames</span>
+          <br>
+          digital art, stop motion<br>
+          DIN A3<br>
+          Augmented Reality
+        </p>
 
-            <p class="indent">…</p>
-          </div>
-          <div class='link'>
-            <p>
-              <a href="http://www.ph-lion.com/" target="utopia">Music: PH Lion</a>
-            </p>
-            <p>
-              <a href="http://dniaustrii.eu/2017/Program_ENG.pdf" target="utopia">Exhibition Austrian Days in Gdańsk, Poland</a>
-            </p>
-            <img src="./img/selection2.png" alt="" />
-          </div>
-        </div>
+        <p class="ellipsis">...</p>
+      </div>
+      <div class='link'>
+        <p>
+          <a href="http://www.ph-lion.com/" target="_blank" rel="nofollow noopener noreferrer">Music: PH Lion</a>
+        </p>
+        <p>
+          <a href="http://dniaustrii.eu/2017/Program_ENG.pdf" target="_blank" rel="nofollow noopener noreferrer">Exhibition Austrian Days in Gdańsk, Poland</a>
+        </p>
       </div>
     </div>
   </block>

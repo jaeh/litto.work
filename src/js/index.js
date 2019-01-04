@@ -1,156 +1,202 @@
-var DROP = 'drop'
-var dragged = false
-var startPos = false
-var currentZIndex = 1
-var draggableContainer = document.getElementsByClassName('draggables')[0]
-var draggables = document.getElementsByClassName('drag')
-var maxZIndex = draggables.length * 5
+const draggableContainer = document.getElementsByClassName('draggables')[0]
+const draggables = document.getElementsByClassName('drag')
+const maxZIndex = draggables.length * 5
 
-function forEach(items, fn) {
-  for (var i = 0; i < items.length; i++) {
+// global app state
+let dragged = false
+let startPos = false
+let currentZIndex = 1
+
+const forEach = (items, fn) => {
+  for (let i = 0; i < items.length; i++) {
     if (items.hasOwnProperty(i)) {
       fn(items[i])
     }
   }
 }
 
-function hasCl(e, cl) {
-  return e.className.indexOf(cl) > -1
-}
+// resize and reposition after load of images
 
-function addCl(e, cl) {
-  if (!hasCl(e, cl)) {
-    e.className = e.className ? e.className + ' ' + cl : cl
-  }
-}
+const onload = par => e => {
+  if (cl.has(e.target, 'bg')) {
+    const tar = e.target
+    let width = tar.naturalWidth
+    let height = tar.naturalHeight
+    let left = 0
+    let top = 0
 
-function rmCl(e, cl) {
-  if (hasCl(e, cl)) {
-    if (e.className.indexOf(' ' + cl) > -1) {
-      cl = ' ' + cl
+    // resize if too wide
+    const maxWidth = window.innerWidth * .7
+    if (width > maxWidth) {
+      const widthPercent = (width / maxWidth) + .1
+      width /= widthPercent
+      height /= widthPercent
     }
-    e.className = e.className.replace(cl, '')
+
+    // resize if too high
+    const maxHeight = window.innerHeight * .7
+    if (height > maxHeight) {
+      const heightPercent = (height / maxHeight) + .1
+      height /= heightPercent
+      width /= heightPercent
+    }
+
+    const maxLeft = window.innerWidth - width
+    const maxTop = window.innerHeight - height
+    left = Math.random() * maxLeft
+    top = Math.random() * maxTop
+    left = `${Math.floor(percentFromPixels('Width', left))}%`
+    top = `${Math.floor(percentFromPixels('Height', top))}%`
+
+    par.style.left = left
+    par.style.top = top
   }
 }
 
-function toggleCl(e, cl) {
-  if (hasCl(e, cl)) {
-    rmCl(e, cl)
-  } else {
-    addCl(e, cl)
+forEach(draggables, d => {
+  const ran = Math.random()
+  const pos = {
+    left: '100%',
+    top: '100%',
   }
+
+  if (ran > 0.7) {
+    pos.left = `-${pos.left}`
+  } else if (ran < 0.3) {
+    pos.top = `-${pos.top}`
+  }
+
+  d.style.left = pos.left
+  d.style.top = pos.top
+
+  const img = d.getElementsByClassName('bg')[0]
+  if (img) {
+    img.addEventListener('load', onload(d))
+  }
+})
+
+const cl = {
+  has(e, c) {
+    return e.className && e.className.indexOf(c) > -1
+  },
+  add(e, c) {
+    if (!cl.has(e, c)) {
+      e.className = e.className ? e.className + ' ' + c : c
+    }
+  },
+  rm(e, c) {
+    if (cl.has(e, c)) {
+      e.className = e.className.replace(c, '').trim()
+    }
+  },
+  toggle: (e, c) => {
+    if (cl.has(e, c)) {
+      cl.rm(e, c)
+    } else {
+      cl.add(e, c)
+    }
+  },
 }
 
-function doNothing(e) {
+const doNothing = (e) => {
   e.preventDefault()
   return false
 }
 
-function $(str) {
-  return document.getElementById(str)
-}
+const $ = str => document.getElementById(str)
 
-function getPos(e) {
-  return parseInt(e.replace('px', ''))
-}
+const getPos = e => parseInt(e.replace('%', ''))
 
-function isOutOfBounds(e) {
-  return (
-    e.clientX >= window.innerWidth ||
-    e.clientX <= 0 ||
-    e.clientY >= window.innerHeight ||
-    e.clientY <= 0
-  )
-}
+const percentFromPixels = (direction, px) => (px / window[`inner${direction}`]) * 100
+const pixelsFromPercent = (direction, pc) => (pc * window[`inner${direction}`]) / 100
 
-function drag(ev) {
+const isOutOfBounds = e => (
+  e.clientX >= window.innerWidth ||
+  e.clientX <= 0 ||
+  e.clientY >= window.innerHeight ||
+  e.clientY <= 0
+)
+
+const drag = ev => {
   dragged = ev.currentTarget
+
+  cl.add(dragged, 'dragged')
+
   startPos = {
-    left: getPos(dragged.style.left),
-    top: getPos(dragged.style.top),
+    left: pixelsFromPercent('Width', getPos(dragged.style.left)),
+    top: pixelsFromPercent('Height', getPos(dragged.style.top)),
   }
   currentZIndex += 1
   dragged.style.zIndex = currentZIndex
   dragged.offset = {
-    left: ev.clientX - getPos(dragged.style.left),
-    top: ev.clientY - getPos(dragged.style.top),
+    left: ev.clientX - pixelsFromPercent('Width', getPos(dragged.style.left)),
+    top: ev.clientY - pixelsFromPercent('Height', getPos(dragged.style.top)),
   }
   dragged.style.opacity = 0.8
 
-  draggableContainer.addEventListener('mousemove', mousemove)
-  draggableContainer.addEventListener('touchmove', mousemove)
-  draggableContainer.addEventListener('mouseup', drop)
-  draggableContainer.addEventListener('touchend', drop)
-  draggableContainer.addEventListener('mouseout', function(e) {
-    if (isOutOfBounds(e)) {
-      drop(e)
-    }
-  })
+  document.addEventListener('mousemove', mousemove)
+  document.addEventListener('mouseup', drop)
+  document.addEventListener('mouseout', dropIfOutOfBounds)
 }
 
-function drop(ev) {
+const drop = () => {
   if (!dragged) {
     return
   }
 
-  if (startPos) {
-    var endPos = {
-      left: getPos(dragged.style.left),
-      top: getPos(dragged.style.top),
-    }
-
-    if (startPos.left === endPos.left && startPos.top === endPos.top) {
-      // console.log('click')
-    } else {
-      // console.log('drop')
-    }
-
-    forEach(draggables, function(ele) {
-      rmCl(ele, 'dropped')
-    })
-    addCl(dragged, 'dropped')
-  }
+  forEach(draggables, function(ele) {
+    cl.rm(ele, 'dropped')
+    cl.rm(ele, 'dragged')
+  })
+  cl.add(dragged, 'dropped')
 
   dragged.style.opacity = 1
 
+
+  document.removeEventListener('mousemove', mousemove)
+  document.removeEventListener('mouseup', drop)
+  document.removeEventListener('mouseout', dropIfOutOfBounds)
+
   dragged = false
   startPos = false
-
-  document.onmousemove = function() {}
-  document.onmouseup = function() {}
-  document.onmouseout = function() {}
 }
 
-function mousemove(ev) {
+const dropIfOutOfBounds = e => {
+  if (isOutOfBounds(e)) {
+    drop(e)
+  }
+}
+
+const mousemove = ev => {
   if (dragged) {
-    var max = {
+    const max = {
       left: window.innerWidth - dragged.clientWidth,
       top: window.innerHeight - dragged.clientHeight,
     }
 
-    var newLeft = ev.clientX - dragged.offset.left
+    let newLeft = ev.clientX - dragged.offset.left
     if (newLeft < 0) {
       newLeft = 0
     } else if (newLeft > max.left) {
       newLeft = max.left
     }
 
-    dragged.style.left = newLeft + 'px'
+    dragged.style.left = `${percentFromPixels('Width', newLeft)}%`
 
-    var newTop = ev.clientY - dragged.offset.top
+    let newTop = ev.clientY - dragged.offset.top
     if (newTop < 0) {
       newTop = 0
     } else if (newTop > max.top) {
       newTop = max.top
     }
-    dragged.style.top = newTop + 'px'
+    dragged.style.top = `${percentFromPixels('Height', newTop)}%`
   }
 }
 
-function makeDraggable(ele) {
+const makeDraggable = (ele) => {
   ele.addEventListener('dragstart', doNothing)
   ele.addEventListener('mousedown', drag)
-  ele.addEventListener('touchstart', function(e) {
+  ele.addEventListener('touchstart', e => {
     e.stopPropagation()
     drag(e)
   })
@@ -159,18 +205,18 @@ function makeDraggable(ele) {
 forEach(draggables, makeDraggable)
 
 // Menu
-var menuContainer = document.getElementsByClassName('nav')[0]
-var active = menuContainer.getElementsByClassName('active')[0]
+const menuContainer = document.getElementsByClassName('nav')[0]
+const active = menuContainer.getElementsByClassName('active')[0]
 
-function toggleMenu(e) {
+const toggleMenu = e => {
   e.preventDefault()
-  toggleCl(menuContainer, 'show')
+  cl.toggle(menuContainer, 'show')
   return false
 }
 
 if (active) {
   active.addEventListener('click', toggleMenu)
-  active.addEventListener('touchstart', function(e) {
+  active.addEventListener('touchstart', e => {
     e.stopPropagation()
     toggleMenu(e)
   })

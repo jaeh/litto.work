@@ -1,38 +1,49 @@
-<extends src="page.html">
+<extends src="single.html">
+  <block name="menu">
+    <a class="backBtn" href="{{ WEB_ROOT }}">
+      <mixin name="pageLink"></mixin>
+    </a>
+  </block>
+
   <block name="content">
-    <div class="wrapper">
-      <div class="left-container">
-        <h1 class="heading">Cat Feed</h1>
-        <a class="backBtn" href="/">x</a>
-        <div class="separator"></div>
+    <h2>Cat Feed</h2>
 
-        <img src="./img/Realities_Print_Final.jpg" alt="" />
-        <img src="./img/expo_pic1.jpg" alt="" />
-        <img src="./img/expo_pic2.jpg" alt="" />
+    <div class="left">
+      <img src="{{ DIR }}img/Realities_Print_Final.jpg" alt="" />
+      <img src="{{ DIR }}img/expo_pic1.jpg" alt="" />
+      <img src="{{ DIR }}img/expo_pic2.jpg" alt="" />
 
-        <div class="videoWrapper">
-          <iframe width="560" height="315" src="https://www.youtube.com/embed/_1uJjT4bRKI?start=41" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        </div>
+      <div class="videoWrapper">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/_1uJjT4bRKI?start=41" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </div>
+
+    <div class="right">
+      <h3>Feed the Cat, please.</h3>
+
+      <div class="content">
+        <p>
+          <span class="bold uppercase">Cat Feed</span>
+          is a closed circuit of feeding my virtual cat.
+          An error in the system causes different realities...
+          feed the cat by finding the right moment in time!
+        </p>
+        <p class="ellipsis">…</p>
       </div>
 
-      <div class="right-container">
-        <div class="meta">
-          <p class="intro">Feed the Cat, please.</p>
-        </div>
-
-        <div class="content">
-          <p><small class="lead">Cat Feed</small> is a closed circuit of feeding my virtual cat. An error in the system causes different realities... feed the cat by finding the right moment in time!</p>
-          <p class="indent">…</p>
-        </div>
-
-        <div class='link'>
-          <p>
-            <a href="https://artivive.com/" target="utopia">Cooperation: Artivive</a>
-          </p>
-          <p>
-            <a href="http://www.burggasse98.com/2018/09/09/exist-design-days-2018/" target="utopia">Exhibition EXIST @ Burggasse 98 </a>
-          </p>
-        </div>
+      <div class='link'>
+        <p>
+          <a href="https://artivive.com/" target="_blank" rel="nofollow noopener noreferrer">
+            Cooperation: Artivive
+          </a>
+        </p>
+        <p>
+          <a href="http://www.burggasse98.com/2018/09/09/exist-design-days-2018/"
+            target="_blank"
+            rel="nofollow noopener noreferrer">
+            Exhibition EXIST @ Burggasse 98
+          </a>
+        </p>
       </div>
     </div>
   </block>
