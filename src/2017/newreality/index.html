@@ -1,12 +1,14 @@
 <extends src="single.html">
   <block name="menu">
-    <a class="backBtn" href="{{ WEB_ROOT }}2017/">x</a>
+    <a class="backBtn" href="{{ WEB_ROOT }}2017/">
+      <mixin name="pageLink"></mixin>
+    </a>
   </block>
 
   <block name="content">
-    <div>
-      <h2>#newreality</h2>
+    <h2>#newreality</h2>
 
+    <div class="left">
       <img src="{{ DIR }}img/New_Reality_pages.gif" alt="" />
 
       <img src="{{ DIR }}img/02_pages.jpg" alt="" />
@@ -14,7 +16,7 @@
       <img src="{{ DIR }}img/08_pages.jpg" alt="" />
     </div>
 
-    <div>
+    <div class="right">
       <h3>So. You’re starving. Figuratively.</h3>
 
       <div class="content">

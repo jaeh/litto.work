@@ -1,13 +1,14 @@
 <extends src="single.html">
   <block name="menu">
-    <a class="backBtn" href="/">x</a>
+    <a class="backBtn" href="{{ WEB_ROOT }}">
+      <mixin name="pageLink"></mixin>
+    </a>
   </block>
 
   <block name="content">
-    <div>
-      <h2>Cat Feed</h2>
-      <div class="separator"></div>
+    <h2>Cat Feed</h2>
 
+    <div class="left">
       <img src="{{ DIR }}img/Realities_Print_Final.jpg" alt="" />
       <img src="{{ DIR }}img/expo_pic1.jpg" alt="" />
       <img src="{{ DIR }}img/expo_pic2.jpg" alt="" />
@@ -17,7 +18,7 @@
       </div>
     </div>
 
-    <div>
+    <div class="right">
       <h3>Feed the Cat, please.</h3>
 
       <div class="content">

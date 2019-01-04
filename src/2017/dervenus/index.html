@@ -1,12 +1,15 @@
 <extends src="single.html">
   <block name="menu">
-    <a class="backBtn" href="{{ WEB_ROOT }}2017/">x</a>
+    <a class="backBtn" href="{{ WEB_ROOT }}2017/">
+       <mixin name="pageLink"></mixin>
+    </a>
+
   </block>
 
   <block name="content">
-    <div>
-      <h2>Der Venus</h2>
+    <h2>Der Venus</h2>
 
+    <div class="left">
       <img src="{{ DIR }}img/DerVenus_2017_Video.gif" alt="" />
       <img src="{{ DIR }}img/all_imgs.png" alt="" />
 
@@ -17,7 +20,7 @@
       <img src="{{DIR}}img/DerVenus_2017_layers.png" alt="" />
     </div>
 
-    <div>
+    <div class="right">
       <h3>Hard but sincere?</h3>
 
       <div class="content">

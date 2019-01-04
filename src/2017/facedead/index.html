@@ -1,12 +1,14 @@
 <extends src="single.html">
   <block name="menu">
-    <a class="backBtn" href="{{ WEB_ROOT }}2017/">x</a>
+    <a class="backBtn" href="{{ WEB_ROOT }}2017/">
+      <mixin name="pageLink"></mixin>
+    </a>
   </block>
 
   <block name="content">
-    <div>
-      <h2>Face Dead</h2>
+    <h2>Face Dead</h2>
 
+    <div class="left">
       <img src="{{ DIR }}img//batman.jpg" alt="" />
       <div class="content">
         <p>
@@ -49,7 +51,8 @@
 
       <img src="{{ DIR }}img//expo_ARCC.jpeg" alt="" />
     </div>
-    <div class="right-container">
+
+    <div class="right">
       <h3>Since terror attacks started there has been an increase in superhero movie production.</h3>
 
       <div class="content">

@@ -1,12 +1,18 @@
 <extends src="single.html">
   <block name="menu">
-    <a class="backBtn" href="/">x</a>
+    <a class="backBtn" href="{{ WEB_ROOT }}">
+      <mixin name="pageLink"></mixin>
+    </a>
+  </block>
+
+  <block name="meta">
+    <meta name="description" content="10 sec off">
   </block>
 
   <block name="content">
-    <div>
-      <h2>10 Sec Off…</h2>
-      <div class="separator"></div>
+    <h2>10 Sec Off…</h2>
+
+    <div class="left">
         <div class="videoWrapper">
           <iframe width="560" height="315" src="https://www.youtube.com/embed/9g2hyFZ31rs" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
@@ -14,7 +20,7 @@
       </div>
     </div>
 
-    <div>
+    <div class="right">
       <h3>WHAT happens if you switch off for 10 seconds??</h3>
 
       <div class="content">

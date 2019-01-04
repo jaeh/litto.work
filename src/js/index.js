@@ -71,6 +71,7 @@ forEach(draggables, d => {
 
   d.style.left = pos.left
   d.style.top = pos.top
+
   const img = d.getElementsByClassName('bg')[0]
   if (img) {
     img.addEventListener('load', onload(d))
@@ -78,8 +79,8 @@ forEach(draggables, d => {
 })
 
 const cl = {
-  has(e, cl) {
-    return e.className && e.className.indexOf(cl) > -1
+  has(e, c) {
+    return e.className && e.className.indexOf(c) > -1
   },
   add(e, c) {
     if (!cl.has(e, c)) {
@@ -121,6 +122,9 @@ const isOutOfBounds = e => (
 
 const drag = ev => {
   dragged = ev.currentTarget
+
+  cl.add(dragged, 'dragged')
+
   startPos = {
     left: pixelsFromPercent('Width', getPos(dragged.style.left)),
     top: pixelsFromPercent('Height', getPos(dragged.style.top)),
@@ -145,6 +149,7 @@ const drop = () => {
 
   forEach(draggables, function(ele) {
     cl.rm(ele, 'dropped')
+    cl.rm(ele, 'dragged')
   })
   cl.add(dragged, 'dropped')
 
@@ -194,7 +199,7 @@ const mousemove = ev => {
 const makeDraggable = (ele) => {
   ele.addEventListener('dragstart', doNothing)
   ele.addEventListener('mousedown', drag)
-  ele.addEventListener('touchstart', function(e) {
+  ele.addEventListener('touchstart', e => {
     e.stopPropagation()
     drag(e)
   })
@@ -214,7 +219,7 @@ const toggleMenu = e => {
 
 if (active) {
   active.addEventListener('click', toggleMenu)
-  active.addEventListener('touchstart', function(e) {
+  active.addEventListener('touchstart', e => {
     e.stopPropagation()
     toggleMenu(e)
   })

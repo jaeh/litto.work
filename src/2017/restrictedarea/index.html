@@ -1,12 +1,14 @@
 <extends src="single.html">
   <block name="menu">
-    <a class="backBtn" href="{{ WEB_ROOT }}2017/">x</a>
+    <a class="backBtn" href="{{ WEB_ROOT }}2017/">
+      <mixin name="pageLink"></mixin>
+    </a>
   </block>
 
   <block name="content">
-    <div>
-      <h2>Restricted Area</h2>
-
+    <h2>Restricted Area</h2>
+  
+    <div class="left">
       <div class="videoWrapper">
         <iframe width="560" height="315" src="https://www.youtube.com/embed/O6EB6E3Ekbs" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </div>
@@ -18,7 +20,7 @@
       <img src="{{ DIR }}img/Monsterbahn_GlitchFinal_target-1.jpg" alt="" />
     </div>
 
-    <div>
+    <div class="right">
       <h3>Did fiction became reality?</h3>
 
       <div class="content">

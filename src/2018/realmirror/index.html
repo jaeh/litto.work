@@ -1,11 +1,13 @@
 <extends src="single.html">
   <block name="menu">
-    <a class="backBtn" href="/">x</a>
+    <a class="backBtn" href="{{ WEB_ROOT }}">
+      <mixin name="pageLink"></mixin>
+    </a>
   </block>
 
   <block name="content">
-    <div>
-      <h2>Real Mirror</h2>
+    <h2>Real Mirror</h2> 
+    <div class="left">
 
       <img src="{{ DIR }}img/img_catalogue.png" alt="" />
 
@@ -19,7 +21,7 @@
       <img src="{{ DIR }}img/img-6094.jpg">
     </div>
 
-    <div>
+    <div class="right">
       <h3>WHAT if the medium fails to disappear by using a non-normative way of generating perception, by taking advantage of the error/glitch derived by the medium itself?</h3>
 
       <div class="content">

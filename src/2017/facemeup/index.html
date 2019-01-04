@@ -1,18 +1,21 @@
 <extends src="single.html">
   <block name="menu">
-    <a class="backBtn" href="{{ WEB_ROOT }}2017/">x</a>
+    <a class="backBtn" href="{{ WEB_ROOT }}2017/">
+      <mixin name="pageLink"></mixin>
+    </a>
   </block>
 
   <block name="content">
-    <div>
-      <h2>FaceMeUp</h2>
+    <h2>FaceMeUp</h2>
+
+    <div class="left">
       <div class="videoWrapper">
         <iframe width="560" height="315" src="https://www.youtube.com/embed/1YV6F0BvAmA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </div>
       <img src="{{ DIR }}img/selection.png" alt="" />
     </div>
 
-    <div>
+    <div class="right">
       <h3>A self portrait for an unspecific period of time</h3>
 
       <div class="content">
