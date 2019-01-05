@@ -8,7 +8,7 @@ a img{border:none;}
 body{color:#010101;font-family:Ubuntu,sans-serif;font-size:15px;line-height:1.2;max-width:1200px;margin:0 auto;background-color:#f2f2f2;}
 h1,h2{margin:0 0 1em;}
 h1{font-size:1.5em;}
-h2{font-size:2.2em;font-weight:normal;letter-spacing:0.09em;text-transform:uppercase;margin:0.5em 0 0.2em;padding:0 5% 2.5% 0.2em;border-bottom:2px solid #666;}
+h2{font-size:2.2em;font-weight:normal;letter-spacing:0.09em;text-transform:uppercase;margin:0.5em 0 0.2em;padding:0 5% 0.2em;border-bottom:2px solid #666;}
 h3{text-transform:uppercase;line-height:1.5;font-size:1.2em;font-style:italic;font-weight:200;color:#010101;margin:0 0 1em;}
 img{max-height:100%;max-width:100%;}
 a{color:#010101;text-decoration:none;}
@@ -25,7 +25,7 @@ ul.nav li.active .border{height:3px;width:50%;background-color:#010101;float:rig
 ul.nav.show li{opacity:1;-ms-filter:none;-webkit-filter:none;filter:none;height:auto;width:auto;-webkit-transition:all 500ms;transition:all 500ms;}
 ul.nav a{font-style:italic;padding:0 0.1em 0 0;}
 .wrapper{padding-bottom:3em;}
-.wrapper .left,.wrapper .right{color:#333;margin:0.5em 0;padding:5% 2.5%;}
+.wrapper .left,.wrapper .right{color:#333;margin:0.5em 0;padding:5%;}
 .wrapper .left img,.wrapper .right img{margin:0.5em 0;}
 .wrapper .videoWrapper{margin:5% 0;}
 .wrapper .videoWrapper:first-child{margin:0.2em 0 5%;}
@@ -45,14 +45,14 @@ ul.nav a{font-style:italic;padding:0 0.1em 0 0;}
 .intro{font-style:italic;font-weight:200;color:#010101;}
 .intro2{line-height:1.5;font-size:3em;font-family:'Ubuntu',sans-serif;font-style:italic;font-weight:200;color:#010101;}
 .intro2 span{margin:0;padding:0;display:block;}
-.content{font-family:'Ubuntu',sans-serif;font-style:regular;color:#666;font-size:0.85em;line-height:1.5;}
-.content p{margin-top:10;margin-bottom:0;}
+.content{font-family:'Ubuntu',sans-serif;font-style:regular;color:#666;line-height:1.5;}
 .content img{margin:1em 0;}
+.left .content p{margin:0 0 5%;}
 .uppercase{text-transform:uppercase;}
 .bold{font-weight:bold;}
 .ellipsis{color:#666;}
 .pagination{margin-top:20px;margin-bottom:0;padding-left:30%;font-size:0.8em;}
-.link{color:#666;font-size:0.75em;text-decoration:none;font-weight:medium;line-height:1.9em;}
+.link{color:#666;text-decoration:none;font-size:0.9em;line-height:1.9em;}
 @media (min-width:600px){.main .section{font-size:2vw;}}
 @media (min-width:700px){body{font-size:18px;}}
 @media (min-width:800px){.projects{display:inline-block;} .projects .project{float:left;width:31%;margin:0 1%;} .wrapper .left{padding:5% 2.5% 5% 5%;width:50%;float:left;} .wrapper .right{padding:5% 5% 5% 2.5%;width:50%;float:right;}}

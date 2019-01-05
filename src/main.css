@@ -212,15 +212,16 @@ ul.nav
   font-family 'Ubuntu', sans-serif
   font-style regular
   color #666
-  font-size 0.85em
   line-height 1.5
-
-  p
-    margin-top: 10
-    margin-bottom: 0
 
   img
     margin 1em 0
+
+.left
+  .content
+    p
+      margin: 0 0 5%
+
 
 .uppercase
   text-transform uppercase
@@ -238,9 +239,8 @@ ul.nav
 
 .link
   color #666
-  font-size 0.75em
   text-decoration none
-  font-weight medium
+  font-size .9em
   line-height 1.9em
 
 
