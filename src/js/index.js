@@ -117,7 +117,9 @@ forEach(draggables, draggable => {
   if (img) {
     img.addEventListener('load', onload(draggable))
     // make sure the load event fires
-    img.src = img.src
+    setTimeout(() => {
+      img.src = img.src
+    }, 1)
   }
 })
 

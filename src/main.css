@@ -104,21 +104,23 @@ ul.nav
 
 
 .wrapper
-  padding-bottom 5em
+  padding-bottom 3em
 
   .left, 
   .right 
+    color #333
+    margin: 0.5em 0;
+    padding $padding-side
+
     img
-      margin 1em 0
+      margin 0.5em 0
 
   .videoWrapper
-    margin $padding-side 0
+    margin 5% 0
 
-  .left,
-  .right
-    color #333
-    margin: 1em 0;
-    padding $padding-side
+    &:first-child
+      margin 0.2em 0 5%
+
 
 .header,
 .footer
@@ -210,15 +212,16 @@ ul.nav
   font-family 'Ubuntu', sans-serif
   font-style regular
   color #666
-  font-size 0.85em
   line-height 1.5
-
-  p
-    margin-top: 10
-    margin-bottom: 0
 
   img
     margin 1em 0
+
+.left
+  .content
+    p
+      margin: 0 0 5%
+
 
 .uppercase
   text-transform uppercase
@@ -236,9 +239,8 @@ ul.nav
 
 .link
   color #666
-  font-size 0.75em
   text-decoration none
-  font-weight medium
+  font-size .9em
   line-height 1.9em
 
 
@@ -246,6 +248,7 @@ ul.nav
   .main
     .section
       font-size 2vw
+
 
 @media (min-width: 700px)
   body
@@ -261,10 +264,12 @@ ul.nav
       width 31%
       margin 0 1%
 
-  .left
-    width 50%
-    float left
-
-  .right
-    width 49%
-    float right
+  .wrapper
+    .left
+      padding 5% 2.5% 5% 5%
+      width 50%
+      float left
+    .right
+      padding 5% 5% 5% 2.5%
+      width 50%
+      float right
