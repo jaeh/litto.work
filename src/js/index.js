@@ -15,8 +15,30 @@ const forEach = (items, fn) => {
   }
 }
 
-// resize and reposition after load of images
+const cl = {
+  has(e, c) {
+    return e.className && e.className.indexOf(c) > -1
+  },
+  add(e, c) {
+    if (!cl.has(e, c)) {
+      e.className = e.className ? e.className + ' ' + c : c
+    }
+  },
+  rm(e, c) {
+    if (cl.has(e, c)) {
+      e.className = e.className.replace(c, '').trim()
+    }
+  },
+  toggle: (e, c) => {
+    if (cl.has(e, c)) {
+      cl.rm(e, c)
+    } else {
+      cl.add(e, c)
+    }
+  },
+}
 
+// resize and reposition after load of images
 const onload = par => e => {
   if (cl.has(e.target, 'bg')) {
     const tar = e.target
@@ -72,30 +94,38 @@ forEach(draggables, d => {
   const img = d.getElementsByClassName('bg')[0]
   if (img) {
     img.addEventListener('load', onload(d))
+    // make sure the load event fires
+    img.src = img.src
   }
 })
 
-const cl = {
-  has(e, c) {
-    return e.className && e.className.indexOf(c) > -1
-  },
-  add(e, c) {
-    if (!cl.has(e, c)) {
-      e.className = e.className ? e.className + ' ' + c : c
+const touchHandler = (event) => {
+  const touch = event.changedTouches[0]
+  const simulatedEvent = document.createEvent("MouseEvent")
+  
+  const eventNames = {
+    touchstart: "mousedown",
+    touchmove: "mousemove",
+    touchend: "mouseup",
+  }
+
+  simulatedEvent.initMouseEvent(
+    eventNames[event.type], true, true, window, 1,
+    touch.screenX, touch.screenY,
+    touch.clientX, touch.clientY, false,
+    false, false, false, 0, null
+  )
+
+  if (cl.has(touch.target, 'bg')) {
+    if (touch.target === touch.currentTarget) {
+      return true
     }
-  },
-  rm(e, c) {
-    if (cl.has(e, c)) {
-      e.className = e.className.replace(c, '').trim()
-    }
-  },
-  toggle: (e, c) => {
-    if (cl.has(e, c)) {
-      cl.rm(e, c)
-    } else {
-      cl.add(e, c)
-    }
-  },
+  }
+
+  touch.target.dispatchEvent(simulatedEvent)
+  event.preventDefault()
+  event.stopPropagation()
+  return false
 }
 
 const doNothing = (e) => {
@@ -126,6 +156,7 @@ const drag = ev => {
     left: pixelsFromPercent('Width', getPos(dragged.style.left)),
     top: pixelsFromPercent('Height', getPos(dragged.style.top)),
   }
+
   currentZIndex += 1
   dragged.style.zIndex = currentZIndex
   dragged.offset = {
@@ -193,31 +224,39 @@ const mousemove = ev => {
   }
 }
 
-const makeDraggable = (ele) => {
-  ele.addEventListener('dragstart', doNothing)
-  ele.addEventListener('mousedown', drag)
-  ele.addEventListener('touchstart', e => {
-    e.stopPropagation()
-    drag(e)
+
+window.onload = () => {
+  forEach(draggables, d => {
+    d.addEventListener('dragstart', doNothing)
+    d.addEventListener('mousedown', drag)
+    
+    d.addEventListener("touchstart", touchHandler, true)
+    d.addEventListener("touchmove", touchHandler, true)
+    d.addEventListener("touchend", touchHandler, true)
+    d.addEventListener("touchcancel", touchHandler, true)
+
+    const a = d.getElementsByTagName('a')[0]
+    if (a) {
+      a.addEventListener('touchend', e => { 
+        e.stopPropagation()
+        return false
+      })
+    }
   })
 }
-
-forEach(draggables, makeDraggable)
 
 // Menu
 const menuContainer = document.getElementsByClassName('nav')[0]
-const active = menuContainer.getElementsByClassName('active')[0]
+if (menuContainer) {
+  const active = menuContainer.getElementsByClassName('active')[0]
 
-const toggleMenu = e => {
-  e.preventDefault()
-  cl.toggle(menuContainer, 'show')
-  return false
-}
+  const toggleMenu = e => {
+    e.preventDefault()
+    cl.toggle(menuContainer, 'show')
+    return false
+  }
 
-if (active) {
-  active.addEventListener('click', toggleMenu)
-  active.addEventListener('touchstart', e => {
-    e.stopPropagation()
-    toggleMenu(e)
-  })
+  if (active) {
+    active.addEventListener('click', toggleMenu)
+  }
 }
