@@ -1,5 +1,23 @@
-const draggableContainer = document.getElementsByClassName('draggables')[0]
-const draggables = document.getElementsByClassName('drag')
+const D = document
+const M = Math
+const W = window
+
+const $ = (str, par = D) => {
+  const isCl = str.indexOf('.') === 0
+  const isId = str.indexOf('#') === 0
+
+  if (isCl) {
+    return par.getElementsByClassName(str.substr(1, str.length))
+  } else if (isId) {
+    return par.getElementById(str.substr(1, str.length))
+  } else {
+    return par.getElementsByTagName(str)
+  }
+}
+
+// global dom elements
+const draggableContainer = $('.draggables')[0]
+const draggables = $('.drag')
 const maxZIndex = draggables.length * 5
 
 // global app state
@@ -7,6 +25,7 @@ let dragged = false
 let startPos = false
 let currentZIndex = 1
 
+// loop over each item and call fn(item)
 const forEach = (items, fn) => {
   for (let i = 0; i < items.length; i++) {
     if (items.hasOwnProperty(i)) {
@@ -21,7 +40,10 @@ const cl = {
   },
   add(e, c) {
     if (!cl.has(e, c)) {
-      e.className = e.className ? e.className + ' ' + c : c
+      if (e.className) {
+        c = e.className + ' ' + c
+      }
+      e.className = c
     }
   },
   rm(e, c) {
@@ -48,7 +70,7 @@ const onload = par => e => {
     let top = 0
 
     // resize if too wide
-    const maxWidth = window.innerWidth * .7
+    const maxWidth = W.innerWidth * .7
     if (width > maxWidth) {
       const widthPercent = (width / maxWidth) + .1
       width /= widthPercent
@@ -56,27 +78,27 @@ const onload = par => e => {
     }
 
     // resize if too high
-    const maxHeight = window.innerHeight * .7
+    const maxHeight = W.innerHeight * .7
     if (height > maxHeight) {
       const heightPercent = (height / maxHeight) + .1
       height /= heightPercent
       width /= heightPercent
     }
 
-    const maxLeft = window.innerWidth - width
-    const maxTop = window.innerHeight - height
-    left = Math.random() * maxLeft
-    top = Math.random() * maxTop
-    left = `${Math.floor(percentFromPixels('Width', left))}%`
-    top = `${Math.floor(percentFromPixels('Height', top))}%`
+    const maxLeft = W.innerWidth - width
+    const maxTop = W.innerHeight - height
+    left = M.random() * maxLeft
+    top = M.random() * maxTop
+    left = `${M.floor(percentFromPixels('Width', left))}%`
+    top = `${M.floor(percentFromPixels('Height', top))}%`
 
     par.style.left = left
     par.style.top = top
   }
 }
 
-forEach(draggables, d => {
-  const ran = Math.random()
+forEach(draggables, draggable => {
+  const ran = M.random()
   const pos = {
     left: '100%',
     top: '100%',
@@ -88,12 +110,12 @@ forEach(draggables, d => {
     pos.top = `-${pos.top}`
   }
 
-  d.style.left = pos.left
-  d.style.top = pos.top
+  draggable.style.left = pos.left
+  draggable.style.top = pos.top
 
-  const img = d.getElementsByClassName('bg')[0]
+  const img = $('.bg', draggable)[0]
   if (img) {
-    img.addEventListener('load', onload(d))
+    img.addEventListener('load', onload(draggable))
     // make sure the load event fires
     img.src = img.src
   }
@@ -101,23 +123,26 @@ forEach(draggables, d => {
 
 const touchHandler = (event) => {
   const touch = event.changedTouches[0]
-  const simulatedEvent = document.createEvent("MouseEvent")
-  
+  const simulatedEvent = D.createEvent("MouseEvent")
+
   const eventNames = {
     touchstart: "mousedown",
     touchmove: "mousemove",
     touchend: "mouseup",
   }
 
+  const evt = eventNames[event.type]
+
   simulatedEvent.initMouseEvent(
-    eventNames[event.type], true, true, window, 1,
+    evt, true, true, W, 1,
     touch.screenX, touch.screenY,
-    touch.clientX, touch.clientY, false,
-    false, false, false, 0, null
+    touch.clientX, touch.clientY,
+    false, false, false, false, 0, null
   )
 
   if (cl.has(touch.target, 'bg')) {
     if (touch.target === touch.currentTarget) {
+      console.log('true')
       return true
     }
   }
@@ -133,22 +158,20 @@ const doNothing = (e) => {
   return false
 }
 
-const $ = str => document.getElementById(str)
-
 const getPos = e => parseInt(e.replace('%', ''))
 
-const percentFromPixels = (direction, px) => (px / window[`inner${direction}`]) * 100
-const pixelsFromPercent = (direction, pc) => (pc * window[`inner${direction}`]) / 100
+const percentFromPixels = (direction, px) => (px / W[`inner${direction}`]) * 100
+const pixelsFromPercent = (direction, pc) => (pc * W[`inner${direction}`]) / 100
 
 const isOutOfBounds = e => (
-  e.clientX >= window.innerWidth ||
+  e.clientX >= W.innerWidth ||
   e.clientX <= 0 ||
-  e.clientY >= window.innerHeight ||
+  e.clientY >= W.innerHeight ||
   e.clientY <= 0
 )
 
-const drag = ev => {
-  dragged = ev.currentTarget
+const drag = evt => {
+  dragged = evt.currentTarget
 
   cl.add(dragged, 'dragged')
 
@@ -160,14 +183,14 @@ const drag = ev => {
   currentZIndex += 1
   dragged.style.zIndex = currentZIndex
   dragged.offset = {
-    left: ev.clientX - pixelsFromPercent('Width', getPos(dragged.style.left)),
-    top: ev.clientY - pixelsFromPercent('Height', getPos(dragged.style.top)),
+    left: evt.clientX - pixelsFromPercent('Width', getPos(dragged.style.left)),
+    top: evt.clientY - pixelsFromPercent('Height', getPos(dragged.style.top)),
   }
   dragged.style.opacity = 0.8
 
-  document.addEventListener('mousemove', mousemove)
-  document.addEventListener('mouseup', drop)
-  document.addEventListener('mouseout', dropIfOutOfBounds)
+  D.addEventListener('mousemove', mousemove)
+  D.addEventListener('mouseup', drop)
+  D.addEventListener('mouseout', dropIfOutOfBounds)
 }
 
 const drop = () => {
@@ -175,18 +198,21 @@ const drop = () => {
     return
   }
 
-  forEach(draggables, function(ele) {
-    cl.rm(ele, 'dropped')
-    cl.rm(ele, 'dragged')
+  forEach(draggables, draggable => {
+    cl.rm(draggable, 'dragged')
+
+    if (draggable === dragged) {
+      cl.add(dragged, 'dropped')
+    } else {
+      cl.rm(draggable, 'dropped')
+    }
   })
-  cl.add(dragged, 'dropped')
 
   dragged.style.opacity = 1
 
-
-  document.removeEventListener('mousemove', mousemove)
-  document.removeEventListener('mouseup', drop)
-  document.removeEventListener('mouseout', dropIfOutOfBounds)
+  D.removeEventListener('mousemove', mousemove)
+  D.removeEventListener('mouseup', drop)
+  D.removeEventListener('mouseout', dropIfOutOfBounds)
 
   dragged = false
   startPos = false
@@ -198,14 +224,14 @@ const dropIfOutOfBounds = e => {
   }
 }
 
-const mousemove = ev => {
+const mousemove = evt => {
   if (dragged) {
     const max = {
-      left: window.innerWidth - dragged.clientWidth,
-      top: window.innerHeight - dragged.clientHeight,
+      left: W.innerWidth - dragged.clientWidth,
+      top: W.innerHeight - dragged.clientHeight,
     }
 
-    let newLeft = ev.clientX - dragged.offset.left
+    let newLeft = evt.clientX - dragged.offset.left
     if (newLeft < 0) {
       newLeft = 0
     } else if (newLeft > max.left) {
@@ -214,7 +240,7 @@ const mousemove = ev => {
 
     dragged.style.left = `${percentFromPixels('Width', newLeft)}%`
 
-    let newTop = ev.clientY - dragged.offset.top
+    let newTop = evt.clientY - dragged.offset.top
     if (newTop < 0) {
       newTop = 0
     } else if (newTop > max.top) {
@@ -224,20 +250,19 @@ const mousemove = ev => {
   }
 }
 
+W.onload = () => {
+  forEach(draggables, draggable => {
+    draggable.addEventListener('dragstart', doNothing)
+    draggable.addEventListener('mousedown', drag)
 
-window.onload = () => {
-  forEach(draggables, d => {
-    d.addEventListener('dragstart', doNothing)
-    d.addEventListener('mousedown', drag)
-    
-    d.addEventListener("touchstart", touchHandler, true)
-    d.addEventListener("touchmove", touchHandler, true)
-    d.addEventListener("touchend", touchHandler, true)
-    d.addEventListener("touchcancel", touchHandler, true)
+    draggable.addEventListener("touchstart", touchHandler, true)
+    draggable.addEventListener("touchmove", touchHandler, true)
+    draggable.addEventListener("touchend", touchHandler, true)
+    draggable.addEventListener("touchcancel", touchHandler, true)
 
-    const a = d.getElementsByTagName('a')[0]
+    const a = $('a', draggable)[0]
     if (a) {
-      a.addEventListener('touchend', e => { 
+      a.addEventListener('touchend', e => {
         e.stopPropagation()
         return false
       })
@@ -246,9 +271,9 @@ window.onload = () => {
 }
 
 // Menu
-const menuContainer = document.getElementsByClassName('nav')[0]
+const menuContainer = $('.nav')[0]
 if (menuContainer) {
-  const active = menuContainer.getElementsByClassName('active')[0]
+  const active = $('.active', menuContainer)[0]
 
   const toggleMenu = e => {
     e.preventDefault()
