@@ -24,10 +24,11 @@ ul.nav li.active a::before{content:"";border-top:3px solid #010101;display:block
 ul.nav li.active .border{height:3px;width:50%;background-color:#010101;float:right;}
 ul.nav.show li{opacity:1;-ms-filter:none;-webkit-filter:none;filter:none;height:auto;width:auto;-webkit-transition:all 500ms;transition:all 500ms;}
 ul.nav a{font-style:italic;padding:0 0.1em 0 0;}
-.wrapper{padding-bottom:5em;}
-.wrapper .left img,.wrapper .right img{margin:1em 0;}
+.wrapper{padding-bottom:3em;}
+.wrapper .left,.wrapper .right{color:#333;margin:0.5em 0;padding:5%;}
+.wrapper .left img,.wrapper .right img{margin:0.5em 0;}
 .wrapper .videoWrapper{margin:5% 0;}
-.wrapper .left,.wrapper .right{color:#333;margin:1em 0;padding:5%;}
+.wrapper .videoWrapper:first-child{margin:0.2em 0 5%;}
 .header.main,.footer.main{position:fixed;left:auto;right:10px;}
 .header.main{top:10px;z-index:10000;}
 .footer.main{top:auto;bottom:10px;z-index:1000000;}
@@ -44,15 +45,15 @@ ul.nav a{font-style:italic;padding:0 0.1em 0 0;}
 .intro{font-style:italic;font-weight:200;color:#010101;}
 .intro2{line-height:1.5;font-size:3em;font-family:'Ubuntu',sans-serif;font-style:italic;font-weight:200;color:#010101;}
 .intro2 span{margin:0;padding:0;display:block;}
-.content{font-family:'Ubuntu',sans-serif;font-style:regular;color:#666;font-size:0.85em;line-height:1.5;}
-.content p{margin-top:10;margin-bottom:0;}
+.content{font-family:'Ubuntu',sans-serif;font-style:regular;color:#666;line-height:1.5;}
 .content img{margin:1em 0;}
+.left .content p{margin:0 0 5%;}
 .uppercase{text-transform:uppercase;}
 .bold{font-weight:bold;}
 .ellipsis{color:#666;}
 .pagination{margin-top:20px;margin-bottom:0;padding-left:30%;font-size:0.8em;}
-.link{color:#666;font-size:0.75em;text-decoration:none;font-weight:medium;line-height:1.9em;}
+.link{color:#666;text-decoration:none;font-size:0.9em;line-height:1.9em;}
 @media (min-width:600px){.main .section{font-size:2vw;}}
 @media (min-width:700px){body{font-size:18px;}}
-@media (min-width:800px){.projects{display:inline-block;} .projects .project{float:left;width:31%;margin:0 1%;} .left{width:50%;float:left;} .right{width:49%;float:right;}}
+@media (min-width:800px){.projects{display:inline-block;} .projects .project{float:left;width:31%;margin:0 1%;} .wrapper .left{padding:5% 2.5% 5% 5%;width:50%;float:left;} .wrapper .right{padding:5% 5% 5% 2.5%;width:50%;float:right;}}
 /*# sourceMappingURL=main.css.map */
