@@ -25,8 +25,9 @@ ul.nav li.active a::before{content:"";border-top:3px solid #010101;display:block
 ul.nav li.active .border{height:3px;width:50%;background-color:#010101;float:right;}
 ul.nav.show li{opacity:1;-ms-filter:none;-webkit-filter:none;filter:none;height:auto;width:auto;-webkit-transition:all 500ms;transition:all 500ms;}
 ul.nav a{font-style:italic;padding:0 0.1em 0 0;}
-.wrapper{padding-bottom:3em;}
-.wrapper .left,.wrapper .right{color:#333;margin:0.5em 0;padding:5%;}
+.wrapper{display:inline-block;padding-bottom:3em;}
+.wrapper .left,.wrapper .right{color:#333;margin:0.5em 0;padding:0 5%;}
+.wrapper .left h3,.wrapper .right h3{padding:5% 0;}
 .wrapper .left img,.wrapper .right img{margin:0.5em 0;width:100%;}
 .wrapper .full img{padding:0 5%;width:auto;margin:5% auto;max-width:90%;display:block;}
 .wrapper .videoWrapper{margin:5% 0;}
