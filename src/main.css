@@ -110,13 +110,17 @@ ul.nav
 
 
 .wrapper
+  display inline-block
   padding-bottom 3em
 
   .left,
   .right
     color #333
     margin: .5em 0;
-    padding $padding-side
+    padding 0 $padding-side
+
+    h3
+      padding $padding-side 0
 
     img
       margin .5em 0
