@@ -27,7 +27,8 @@ ul.nav.show li{opacity:1;-ms-filter:none;-webkit-filter:none;filter:none;height:
 ul.nav a{font-style:italic;padding:0 0.1em 0 0;}
 .wrapper{padding-bottom:3em;}
 .wrapper .left,.wrapper .right{color:#333;margin:0.5em 0;padding:5%;}
-.wrapper .left img,.wrapper .right img{margin:0.5em 0;}
+.wrapper .left img,.wrapper .right img{margin:0.5em 0;width:100%;}
+.wrapper .full img{padding:0 5%;width:auto;margin:5% auto;max-width:90%;display:block;}
 .wrapper .videoWrapper{margin:5% 0;}
 .wrapper .videoWrapper:first-child{margin:0.2em 0 5%;}
 .header.main,.footer.main{position:fixed;left:auto;right:10px;}
