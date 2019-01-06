@@ -171,6 +171,8 @@ ul.nav
   .bg
     max-width 45vw
     max-height 50vh
+    min-width 20vw
+    min-height 25vh
 
   a
     position absolute
