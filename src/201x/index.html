@@ -1,5 +1,5 @@
 <extends src="page.html">
-  
+
   <block name="menu">
     <ul class="nav">
       <li class="active"><a href="{{WEB_ROOT}}201x/">201≤</a></li>
@@ -11,31 +11,38 @@
   <block name="content">
     <div class="draggables">
       <div class="drag">
-        <img class="bg" src="{{ DIR }}img/cyber.jpg" />
+        <img class="bg" src="{{ DIR }}img/litto_cyber.jpg" />
       </div>
 
       <div class="drag">
-        <img class="bg" src="{{ DIR }}img/daredevil.jpg" />
+        <img class="bg" src="{{ DIR }}img/litto_daredevil.jpg" />
       </div>
 
       <div class="drag">
-        <img class="bg" src="{{ DIR }}img/showoff.jpg" />
+        <img class="bg" src="{{ DIR }}img/litto_showoff.jpg" />
+      </div>
+
+
+      <div class="drag">
+        <a href="{{ DIR }}littography">
+          <mixin name="link"></mixin>
+        </a>
+        <img class="bg" src="{{ DIR }}img/littography.jpg" />
       </div>
 
       <div class="drag">
         <a href="https://www.facebook.com/hometownberlin/videos/297655334350951/" target="_blank" rel="noopener nofollow">
           <mixin name="link"></mixin>
         </a>
-        <img class="bg" src="{{ DIR }}img/laberlampe.gif" />
+        <img class="bg" src="{{ DIR }}img/litto_laberlampe.gif" />
       </div>
 
       <div class="drag">
         <a href="https://issuu.com/ssiew/docs/diplom_2005_2013_2" target="_blank" rel="noopener nofollow">
           <mixin name="link"></mixin>
         </a>
-        <img class="bg" src="{{ DIR }}img/rushsyndrom.jpg" />
+        <img class="bg" src="{{ DIR }}img/litto_rushsyndrom.jpg" />
       </div>
-
     </div>
   </block>
 </extends>
