@@ -38,7 +38,7 @@ ul.nav a{font-style:italic;padding:0 0.1em 0 0;}
 .draggables{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;}
 .drag{position:absolute;z-index:0;-webkit-transition:left 500ms,top 500ms;transition:left 500ms,top 500ms;}
 .drag.dragged{-webkit-transition:none;transition:none;}
-.drag .bg{max-width:45vw;max-height:50vh;min-width:20vw;min-height:25vh;}
+.drag .bg{max-width:45vw;max-height:50vh;min-width:20vw;}
 .drag a{position:absolute;right:0;top:0;opacity:0;-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";filter:alpha(opacity=0);height:0;width:0;-webkit-transition:opacity 500ms;transition:opacity 500ms;}
 .drag.dropped a{opacity:1;-ms-filter:none;-webkit-filter:none;filter:none;height:43px;width:43px;}
 .drag.dropped .bg{-webkit-box-shadow:0px 0px 10px 5px rgba(0,0,0,0.15);box-shadow:0px 0px 10px 5px rgba(0,0,0,0.15);}
