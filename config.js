@@ -1,5 +1,3 @@
-const path = require('path')
-
 const HTML = require('@mspg/transpile-posthtml')
 const CSS = require('@mspg/transpile-stylus')
 const JS = require('@mspg/transpile-babel')
