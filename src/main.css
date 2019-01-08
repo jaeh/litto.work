@@ -163,7 +163,6 @@ ul.nav
 .drag
   position absolute
   z-index 0
-  transition left 500ms, top 500ms
 
   &.dragged
     transition none
