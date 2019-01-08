@@ -94,6 +94,7 @@ const onload = par => e => {
 
     par.style.left = left
     par.style.top = top
+    par.style.transition = 'left 500ms, top 500ms'
   }
 }
 
@@ -142,13 +143,6 @@ const touchHandler = (event) => {
     false, false, false, false, 0, null
   )
 
-  if (cl.has(touch.target, 'bg')) {
-    if (touch.target === touch.currentTarget) {
-      console.log('true')
-      return true
-    }
-  }
-
   touch.target.dispatchEvent(simulatedEvent)
   event.preventDefault()
   event.stopPropagation()
@@ -190,6 +184,8 @@ const drag = evt => {
   }
   dragged.style.opacity = 0.8
 
+  dragged.style.transition = null
+
   D.addEventListener('mousemove', mousemove)
   D.addEventListener('mouseup', drop)
   D.addEventListener('mouseout', dropIfOutOfBounds)
@@ -211,6 +207,7 @@ const drop = () => {
   })
 
   dragged.style.opacity = 1
+  dragged.style.transition = 'left 500ms, top 500ms'
 
   D.removeEventListener('mousemove', mousemove)
   D.removeEventListener('mouseup', drop)
