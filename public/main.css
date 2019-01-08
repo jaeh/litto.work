@@ -36,7 +36,7 @@ ul.nav a{font-style:italic;padding:0 0.1em 0 0;}
 .header.main{top:10px;z-index:10000;}
 .footer.main{top:auto;bottom:10px;z-index:1000000;}
 .draggables{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;}
-.drag{position:absolute;z-index:0;-webkit-transition:left 500ms,top 500ms;transition:left 500ms,top 500ms;}
+.drag{position:absolute;z-index:0;}
 .drag.dragged{-webkit-transition:none;transition:none;}
 .drag .bg{max-width:45vw;max-height:50vh;min-width:20vw;}
 .drag a{position:absolute;right:0;top:0;opacity:0;-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";filter:alpha(opacity=0);height:0;width:0;-webkit-transition:opacity 500ms;transition:opacity 500ms;}
