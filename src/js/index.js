@@ -124,8 +124,14 @@ forEach(draggables, draggable => {
   }
 })
 
-const touchHandler = (event) => {
-  const touch = event.changedTouches[0]
+const touchHandler = function(evt) {
+  // how does this make it work???
+  if (!evt.changedTouches[0]) {
+    console.log(evt)
+  }
+
+  const touch = evt.changedTouches[0]
+
   const simulatedEvent = D.createEvent("MouseEvent")
 
   const eventNames = {
@@ -134,18 +140,18 @@ const touchHandler = (event) => {
     touchend: "mouseup",
   }
 
-  const evt = eventNames[event.type]
+  const eventName = eventNames[evt.type]
 
   simulatedEvent.initMouseEvent(
-    evt, true, true, W, 1,
+    eventName, true, true, W, 1,
     touch.screenX, touch.screenY,
     touch.clientX, touch.clientY,
     false, false, false, false, 0, null
   )
 
   touch.target.dispatchEvent(simulatedEvent)
-  event.preventDefault()
-  event.stopPropagation()
+  evt.preventDefault()
+  evt.stopPropagation()
   return false
 }
 
@@ -257,7 +263,7 @@ W.onload = () => {
     draggable.addEventListener("touchstart", touchHandler, true)
     draggable.addEventListener("touchmove", touchHandler, true)
     draggable.addEventListener("touchend", touchHandler, true)
-    draggable.addEventListener("touchcancel", touchHandler, true)
+    // draggable.addEventListener("touchcancel", touchHandler, true)
 
     const a = $('a', draggable)[0]
     if (a) {
