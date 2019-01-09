@@ -60,6 +60,23 @@ const cl = {
   },
 }
 
+const doNothing = (e) => {
+  e.preventDefault()
+  return false
+}
+
+const getPos = e => parseInt(e.replace('%', ''))
+
+const percentFromPixels = (direction, px) => (px / W[`inner${direction}`]) * 100
+const pixelsFromPercent = (direction, pc) => (pc * W[`inner${direction}`]) / 100
+
+const isOutOfBounds = e => (
+  e.clientX >= W.innerWidth ||
+  e.clientX <= 0 ||
+  e.clientY >= W.innerHeight ||
+  e.clientY <= 0
+)
+
 // resize and reposition after load of images
 const onload = par => e => {
   if (cl.has(e.target, 'bg')) {
@@ -116,11 +133,11 @@ forEach(draggables, draggable => {
 
   const img = $('.bg', draggable)[0]
   if (img) {
-    img.addEventListener('load', onload(draggable))
+    onload(draggable)({ target: img })
     // make sure the load event fires
-    setTimeout(() => {
-      img.src = img.src
-    }, 1)
+    // setTimeout(() => {
+    //   img.src = img.src
+    // }, 1)
   }
 })
 
@@ -156,23 +173,6 @@ const touchHandler = function(evt) {
   evt.stopPropagation()
   return false
 }
-
-const doNothing = (e) => {
-  e.preventDefault()
-  return false
-}
-
-const getPos = e => parseInt(e.replace('%', ''))
-
-const percentFromPixels = (direction, px) => (px / W[`inner${direction}`]) * 100
-const pixelsFromPercent = (direction, pc) => (pc * W[`inner${direction}`]) / 100
-
-const isOutOfBounds = e => (
-  e.clientX >= W.innerWidth ||
-  e.clientX <= 0 ||
-  e.clientY >= W.innerHeight ||
-  e.clientY <= 0
-)
 
 const drag = evt => {
   dragged = evt.currentTarget
@@ -263,7 +263,6 @@ W.onload = () => {
     const img = $('.bg', draggable)[0]
     img.addEventListener('dragstart', doNothing)
     img.addEventListener('mousedown', drag)
-
 
     img.addEventListener("touchstart", touchHandler, true)
     img.addEventListener("touchmove", touchHandler, true)
