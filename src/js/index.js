@@ -175,22 +175,23 @@ const isOutOfBounds = e => (
 const drag = evt => {
   dragged = evt.currentTarget
 
+
   cl.add(dragged, 'dragged')
 
   startPos = {
-    left: pixelsFromPercent('Width', getPos(dragged.style.left)),
-    top: pixelsFromPercent('Height', getPos(dragged.style.top)),
+    left: pixelsFromPercent('Width', getPos(dragged.parentNode.style.left)),
+    top: pixelsFromPercent('Height', getPos(dragged.parentNode.style.top)),
   }
 
   currentZIndex += 1
-  dragged.style.zIndex = currentZIndex
-  dragged.offset = {
-    left: evt.clientX - pixelsFromPercent('Width', getPos(dragged.style.left)),
-    top: evt.clientY - pixelsFromPercent('Height', getPos(dragged.style.top)),
+  dragged.parentNode.style.zIndex = currentZIndex
+  dragged.parentNode.offset = {
+    left: evt.clientX - pixelsFromPercent('Width', getPos(dragged.parentNode.style.left)),
+    top: evt.clientY - pixelsFromPercent('Height', getPos(dragged.parentNode.style.top)),
   }
-  dragged.style.opacity = 0.8
+  dragged.parentNode.style.opacity = 0.8
 
-  dragged.style.transition = null
+  dragged.parentNode.style.transition = null
 
   D.addEventListener('mousemove', mousemove)
   D.addEventListener('mouseup', drop)
@@ -205,15 +206,15 @@ const drop = () => {
   forEach(draggables, draggable => {
     cl.rm(draggable, 'dragged')
 
-    if (draggable === dragged) {
-      cl.add(dragged, 'dropped')
+    if (draggable === dragged.parentNode) {
+      cl.add(dragged.parentNode, 'dropped')
     } else {
       cl.rm(draggable, 'dropped')
     }
   })
 
-  dragged.style.opacity = 1
-  dragged.style.transition = 'left 500ms, top 500ms'
+  dragged.parentNode.style.opacity = 1
+  dragged.parentNode.style.transition = 'left 500ms, top 500ms'
 
   D.removeEventListener('mousemove', mousemove)
   D.removeEventListener('mouseup', drop)
@@ -232,46 +233,51 @@ const dropIfOutOfBounds = e => {
 const mousemove = evt => {
   if (dragged) {
     const max = {
-      left: W.innerWidth - dragged.clientWidth,
-      top: W.innerHeight - dragged.clientHeight,
+      left: W.innerWidth - dragged.parentNode.clientWidth,
+      top: W.innerHeight - dragged.parentNode.clientHeight,
     }
 
-    let newLeft = evt.clientX - dragged.offset.left
+    let newLeft = evt.clientX - dragged.parentNode.offset.left
     if (newLeft < 0) {
       newLeft = 0
     } else if (newLeft > max.left) {
       newLeft = max.left
     }
 
-    dragged.style.left = `${percentFromPixels('Width', newLeft)}%`
+    dragged.parentNode.style.left = `${percentFromPixels('Width', newLeft)}%`
 
-    let newTop = evt.clientY - dragged.offset.top
+    let newTop = evt.clientY - dragged.parentNode.offset.top
     if (newTop < 0) {
       newTop = 0
     } else if (newTop > max.top) {
       newTop = max.top
     }
-    dragged.style.top = `${percentFromPixels('Height', newTop)}%`
+    dragged.parentNode.style.top = `${percentFromPixels('Height', newTop)}%`
   }
 }
 
 W.onload = () => {
   forEach(draggables, draggable => {
-    draggable.addEventListener('dragstart', doNothing)
-    draggable.addEventListener('mousedown', drag)
+    const img = $('.bg', draggable)[0]
+    img.addEventListener('dragstart', doNothing)
+    img.addEventListener('mousedown', drag)
 
-    draggable.addEventListener("touchstart", touchHandler, true)
-    draggable.addEventListener("touchmove", touchHandler, true)
-    draggable.addEventListener("touchend", touchHandler, true)
-    // draggable.addEventListener("touchcancel", touchHandler, true)
 
-    const a = $('a', draggable)[0]
-    if (a) {
-      a.addEventListener('touchend', e => {
-        e.stopPropagation()
-        return false
-      })
-    }
+    img.addEventListener("touchstart", touchHandler, true)
+    img.addEventListener("touchmove", touchHandler, true)
+    img.addEventListener("touchend", touchHandler, true)
+    // img.addEventListener("touchcancel", touchHandler, true)
+
+    // const a = $('a', draggable)[0]
+    // console.log({ a })
+    // if (a) {
+    //   a.addEventListener('touchstart', e => {
+    //     e.stopPropagation()
+    //   })
+    //   a.addEventListener('touchend', e => {
+    //     e.stopPropagation()
+    //   })
+    // }
   })
 }
 
