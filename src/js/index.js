@@ -167,7 +167,7 @@ const isOutOfBounds = e => (
 )
 
 const drag = evt => {
-  dragged = evt.currentTarget
+  dragged = evt.currentTarget.parentNode
 
   cl.add(dragged, 'dragged')
 
@@ -209,10 +209,6 @@ const drop = () => {
   dragged.style.opacity = 1
   dragged.style.transition = 'left 500ms, top 500ms'
 
-  D.removeEventListener('mousemove', mousemove)
-  D.removeEventListener('mouseup', drop)
-  D.removeEventListener('mouseout', dropIfOutOfBounds)
-
   dragged = false
   startPos = false
 }
@@ -251,13 +247,16 @@ const mousemove = evt => {
 
 W.onload = () => {
   forEach(draggables, draggable => {
-    draggable.addEventListener('dragstart', doNothing)
-    draggable.addEventListener('mousedown', drag)
+    const img = $('.bg', draggable)[0]
+    if (img) {
+      img.addEventListener('dragstart', doNothing)
+      img.addEventListener('mousedown', drag)
 
-    draggable.addEventListener("touchstart", touchHandler, true)
-    draggable.addEventListener("touchmove", touchHandler, true)
-    draggable.addEventListener("touchend", touchHandler, true)
-    draggable.addEventListener("touchcancel", touchHandler, true)
+      img.addEventListener("touchstart", touchHandler, true)
+      img.addEventListener("touchmove", touchHandler, true)
+      img.addEventListener("touchend", touchHandler, true)
+      img.addEventListener("touchcancel", touchHandler, true)
+    }
 
     const a = $('a', draggable)[0]
     if (a) {
