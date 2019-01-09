@@ -127,7 +127,9 @@ forEach(draggables, draggable => {
 const touchHandler = function(evt) {
   // how does this make it work???
   if (!evt.changedTouches[0]) {
-    console.log(evt)
+    if (console && typeof console.log === 'function') {
+      console.log(evt)
+    }
   }
 
   const touch = evt.changedTouches[0]
@@ -268,16 +270,18 @@ W.onload = () => {
     img.addEventListener("touchend", touchHandler, true)
     // img.addEventListener("touchcancel", touchHandler, true)
 
-    // const a = $('a', draggable)[0]
-    // console.log({ a })
-    // if (a) {
-    //   a.addEventListener('touchstart', e => {
-    //     e.stopPropagation()
-    //   })
-    //   a.addEventListener('touchend', e => {
-    //     e.stopPropagation()
-    //   })
-    // }
+    const a = $('a', draggable)[0]
+    if (a) {
+      a.addEventListener('touchstart', e => {
+        e.stopPropagation()
+      })
+      a.addEventListener('touchmove', e => {
+        e.stopPropagation()
+      })
+      a.addEventListener('touchend', e => {
+        e.stopPropagation()
+      })
+    }
   })
 }
 
