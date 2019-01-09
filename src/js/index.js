@@ -78,9 +78,8 @@ const isOutOfBounds = e => (
 )
 
 // resize and reposition after load of images
-const onload = par => e => {
-  if (cl.has(e.target, 'bg')) {
-    const tar = e.target
+const onload = (par, tar) => {
+  if (cl.has(tar, 'bg')) {
     let width = tar.naturalWidth
     let height = tar.naturalHeight
     let left = 0
@@ -133,11 +132,7 @@ forEach(draggables, draggable => {
 
   const img = $('.bg', draggable)[0]
   if (img) {
-    onload(draggable)({ target: img })
-    // make sure the load event fires
-    // setTimeout(() => {
-    //   img.src = img.src
-    // }, 1)
+    onload(draggable, img)
   }
 })
 
