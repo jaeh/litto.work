@@ -254,7 +254,7 @@ W.onload = () => {
       img.addEventListener("touchcancel", touchHandler, true)
 
       const parentStyle = img.parentNode.style
-      if (img.complete || (parentStyle && parentStyle.left === '100%' || parentStyle.left === '-100%')) {
+      if (parentStyle && parentStyle.left === '100%' || parentStyle.left === '-100%') {
         img.dispatchEvent(new Event('load'))
       }
     }
