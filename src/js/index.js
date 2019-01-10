@@ -117,10 +117,6 @@ forEach(draggables, draggable => {
   const img = $('.bg', draggable)[0]
   if (img) {
     img.addEventListener('load', onload(draggable))
-    // make sure the load event fires
-    setTimeout(() => {
-      img.src = img.src
-    }, 1)
   }
 })
 
@@ -256,6 +252,11 @@ W.onload = () => {
       img.addEventListener("touchmove", touchHandler, true)
       img.addEventListener("touchend", touchHandler, true)
       img.addEventListener("touchcancel", touchHandler, true)
+
+      const parentStyle = img.parentNode.style
+      if (img.complete || (parentStyle && parentStyle.left === '100%' || parentStyle.left === '-100%')) {
+        img.dispatchEvent(new Event('load'))
+      }
     }
 
     const a = $('a', draggable)[0]
