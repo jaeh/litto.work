@@ -35,6 +35,8 @@
     "@mspg/transpile-stylus": "github:mspg/transpile-stylus"
   },
   "dependencies": {
-    "@magic/test": "0.0.2"
+    "@babel/preset-env": "^7.3.1",
+    "@magic/test": "0.0.2",
+    "imagemin": "6.1.0"
   }
 }
