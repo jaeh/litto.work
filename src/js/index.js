@@ -60,6 +60,12 @@ const cl = {
   },
 }
 
+const on = (ele, listener, cb) => {
+  if (ele) {
+    ele.addEventListener(listener, cb)
+  }
+}
+
 // resize and reposition after load of images
 const onload = par => e => {
   if (cl.has(e.target, 'bg')) {
@@ -115,9 +121,7 @@ forEach(draggables, draggable => {
   draggable.style.top = pos.top
 
   const img = $('.bg', draggable)[0]
-  if (img) {
-    img.addEventListener('load', onload(draggable))
-  }
+  on(img, 'load', onload(draggable))
 })
 
 const touchHandler = (event) => {
@@ -182,9 +186,9 @@ const drag = evt => {
 
   dragged.style.transition = null
 
-  D.addEventListener('mousemove', mousemove)
-  D.addEventListener('mouseup', drop)
-  D.addEventListener('mouseout', dropIfOutOfBounds)
+  on(D, 'mousemove', mousemove)
+  on(D, 'mouseup', drop)
+  on(D, 'mouseout', dropIfOutOfBounds)
 }
 
 const drop = () => {
@@ -245,13 +249,13 @@ W.onload = () => {
   forEach(draggables, draggable => {
     const img = $('.bg', draggable)[0]
     if (img) {
-      img.addEventListener('dragstart', doNothing)
-      img.addEventListener('mousedown', drag)
+      on(img, 'dragstart', doNothing)
+      on(img, 'mousedown', drag)
 
-      img.addEventListener("touchstart", touchHandler, true)
-      img.addEventListener("touchmove", touchHandler, true)
-      img.addEventListener("touchend", touchHandler, true)
-      img.addEventListener("touchcancel", touchHandler, true)
+      on(img, "touchstart", touchHandler, true)
+      on(img, "touchmove", touchHandler, true)
+      on(img, "touchend", touchHandler, true)
+      on(img, "touchcancel", touchHandler, true)
 
       const parentStyle = img.parentNode.style
       if (parentStyle && parentStyle.left === '100%' || parentStyle.left === '-100%') {
@@ -261,7 +265,7 @@ W.onload = () => {
 
     const a = $('a', draggable)[0]
     if (a) {
-      a.addEventListener('touchend', e => {
+      on(a, 'touchend', e => {
         e.stopPropagation()
         return false
       })
@@ -281,7 +285,7 @@ if (menuContainer) {
   }
 
   if (active) {
-    active.addEventListener('click', toggleMenu)
+    on(active, 'click', toggleMenu)
   }
 }
 
@@ -290,7 +294,7 @@ if (menuContainer) {
 var trigger = $('.about-page-trigger')[0]
 
 if (trigger) {
-  trigger.addEventListener("click", function (evt) {
+  on(trigger, "click", function (evt) {
     evt.preventDefault();
 
     cl.toggle(document.body, "about-visible")
