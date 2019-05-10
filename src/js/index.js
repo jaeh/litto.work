@@ -60,14 +60,21 @@ const cl = {
   },
 }
 
+const on = (ele, listener, cb) => {
+  if (ele) {
+    ele.addEventListener(listener, cb)
+  }
+}
+
 // resize and reposition after load of images
 const onload = par => e => {
   if (cl.has(e.target, 'bg')) {
     const tar = e.target
-    let width = tar.naturalWidth
-    let height = tar.naturalHeight
+    let width = tar.getBoundingClientRect().width
+    let height = tar.getBoundingClientRect().height
     let left = 0
     let top = 0
+    console.log({ width, height })
 
     // resize if too wide
     const maxWidth = W.innerWidth * .7
@@ -115,13 +122,7 @@ forEach(draggables, draggable => {
   draggable.style.top = pos.top
 
   const img = $('.bg', draggable)[0]
-  if (img) {
-    img.addEventListener('load', onload(draggable))
-    // make sure the load event fires
-    setTimeout(() => {
-      img.src = img.src
-    }, 1)
-  }
+  on(img, 'load', onload(draggable))
 })
 
 const touchHandler = (event) => {
@@ -167,7 +168,7 @@ const isOutOfBounds = e => (
 )
 
 const drag = evt => {
-  dragged = evt.currentTarget
+  dragged = evt.currentTarget.parentNode
 
   cl.add(dragged, 'dragged')
 
@@ -186,9 +187,9 @@ const drag = evt => {
 
   dragged.style.transition = null
 
-  D.addEventListener('mousemove', mousemove)
-  D.addEventListener('mouseup', drop)
-  D.addEventListener('mouseout', dropIfOutOfBounds)
+  on(D, 'mousemove', mousemove)
+  on(D, 'mouseup', drop)
+  on(D, 'mouseout', dropIfOutOfBounds)
 }
 
 const drop = () => {
@@ -208,10 +209,6 @@ const drop = () => {
 
   dragged.style.opacity = 1
   dragged.style.transition = 'left 500ms, top 500ms'
-
-  D.removeEventListener('mousemove', mousemove)
-  D.removeEventListener('mouseup', drop)
-  D.removeEventListener('mouseout', dropIfOutOfBounds)
 
   dragged = false
   startPos = false
@@ -251,17 +248,25 @@ const mousemove = evt => {
 
 W.onload = () => {
   forEach(draggables, draggable => {
-    draggable.addEventListener('dragstart', doNothing)
-    draggable.addEventListener('mousedown', drag)
+    const img = $('.bg', draggable)[0]
+    if (img) {
+      on(img, 'dragstart', doNothing)
+      on(img, 'mousedown', drag)
 
-    draggable.addEventListener("touchstart", touchHandler, true)
-    draggable.addEventListener("touchmove", touchHandler, true)
-    draggable.addEventListener("touchend", touchHandler, true)
-    draggable.addEventListener("touchcancel", touchHandler, true)
+      on(img, "touchstart", touchHandler, true)
+      on(img, "touchmove", touchHandler, true)
+      on(img, "touchend", touchHandler, true)
+      on(img, "touchcancel", touchHandler, true)
+
+      const parentStyle = img.parentNode.style
+      if (parentStyle && parentStyle.left === '100%' || parentStyle.left === '-100%') {
+        img.dispatchEvent(new Event('load'))
+      }
+    }
 
     const a = $('a', draggable)[0]
     if (a) {
-      a.addEventListener('touchend', e => {
+      on(a, 'touchend', e => {
         e.stopPropagation()
         return false
       })
@@ -281,6 +286,20 @@ if (menuContainer) {
   }
 
   if (active) {
-    active.addEventListener('click', toggleMenu)
+    on(active, 'click', toggleMenu)
   }
+}
+
+// About page
+
+var trigger = $('.about-page-trigger')[0]
+
+if (trigger) {
+  on(trigger, "click", function (evt) {
+    evt.preventDefault();
+
+    cl.toggle(document.body, "about-visible")
+
+    return false
+  })
 }

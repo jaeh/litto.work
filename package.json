@@ -3,6 +3,7 @@
   "version": "0.23.5",
   "author": "Wizards & Witches",
   "license": "AGPL-3.0",
+  "private": true,
   "contributors": [
     {
       "name": "jascha ehrenreich",
@@ -20,7 +21,7 @@
   "scripts": {
     "start": "mspg build serve watch",
     "build": "NODE_ENV=production mspg build zip",
-    "build:serve": "NODE_ENV=production mspg build serve zip",
+    "prod": "NODE_ENV=production mspg build serve watch",
     "clean": "rm -rf public",
     "lint:css": "mspg lint css",
     "lint:html": "mspg lint html",
@@ -35,6 +36,6 @@
     "@mspg/transpile-stylus": "github:mspg/transpile-stylus"
   },
   "dependencies": {
-    "@magic/test": "0.0.2"
+    "@magic/test": "0.0.12"
   }
 }
