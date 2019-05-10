@@ -23,7 +23,6 @@ body
   &.about-visible
     overflow hidden
 
-
 h1,
 h2
   margin 0 0 1em
@@ -172,8 +171,11 @@ ul.nav
     transition none
 
   .bg
-    max-width 45vw
-    max-height 50vh
+    display inline-block
+
+    source, img
+      max-width 45vw
+      max-height 50vh
 
   a
     position absolute
@@ -191,7 +193,8 @@ ul.nav
       width 43px
 
     .bg
-      box-shadow 0px 0px 10px 5px rgba(0,0,0,.15)
+      source, img
+        box-shadow 0px 0px 10px 5px rgba(0,0,0,.15)
 
 .videoWrapper
   height 0
@@ -244,7 +247,6 @@ ul.nav
     p
       margin: 0 0 5%
 
-
 .uppercase
   text-transform uppercase
 .bold
@@ -266,8 +268,65 @@ ul.nav
   line-height 1.9em
 
 
-
 /* About Page */
+
+.about-page
+  background-color rgb(0,0,0)
+  background-color rgba(0,0,0,0.8)
+  color #f2f2f2
+  font-weight 300
+  font-size 21px
+
+  opacity 0
+
+  height 100%
+  height 100vh
+  width 100%
+  width 100vw
+
+  left 100%
+  left 100vw
+  top 100%
+  top 100vh
+
+  transition left 500ms, top 500ms, opacity 500ms
+  position fixed
+
+  overflow-y auto
+  /*
+    image z-index gets incremented.
+    we will assume nobody will hover 10.000 times without reloading
+  */
+  z-index 10000
+
+  h1
+    font-size 30px
+    font-weight 300
+
+  .about-page nav a
+    text-decoration none
+    font-family 'Ubuntu', sans-serif
+    font-style italic
+    display inline-block
+    background-color #f2f2f2
+    color black
+    padding 5px 10px
+
+body.about-visible .about-page
+  opacity 1
+  left 0
+  top 0
+  transition left 500ms, top 500ms, opacity 500ms
+
+.about-page-content
+  margin  0 10%
+  color black
+  font-family 'Ubuntu', sans-serif
+  font-style normal
+  line-height 1.5
+  color white
+  height
+  text-align left
 
 .about-page-trigger
   position fixed
@@ -281,60 +340,6 @@ ul.nav
   color black
   background-color rgb(242, 242, 242)
   background-color rgba(242, 242, 242,0.9)
-
-.about-page h1 
-  font-size 30px
-  font-weight 300
-
-.about-page nav a 
-  text-decoration none
-  font-family 'Ubuntu', sans-serif
-  font-style italic
-  display inline-block
-  background-color #f2f2f2
-  color black
-  padding 5px 10px
-  cursor url(./assets/mouse.gif)
-
-.about-page 
-  background-color rgb(0,0,0)
-  background-color rgba(0,0,0,0.8)
-  color #f2f2f2
-  height 100%
-  height 100vh
-  width 100%
-  width 100vw
-  font-weight 300
-  font-size 21px
-
-  opacity 0
-
-  left 100%
-  left 100vw
-  top 100%
-  top 100vh
-
-  transition left 500ms, top 500ms, opacity 500ms
-  position fixed
-
-  overflow-y auto
-
-body.about-visible .about-page 
-  opacity 1
-  left 0
-  top 0
-  transition left 500ms, top 500ms, opacity 500ms
-
-.about-page-content 
-  margin  0 10%
-  color black
-  font-family 'Ubuntu', sans-serif
-  font-style normal
-  line-height 1.5
-  color white
-  height 
-  text-align left
-
 
 
 @media (min-width: 600px)

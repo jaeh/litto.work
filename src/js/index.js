@@ -70,10 +70,11 @@ const on = (ele, listener, cb) => {
 const onload = par => e => {
   if (cl.has(e.target, 'bg')) {
     const tar = e.target
-    let width = tar.naturalWidth
-    let height = tar.naturalHeight
+    let width = tar.getBoundingClientRect().width
+    let height = tar.getBoundingClientRect().height
     let left = 0
     let top = 0
+    console.log({ width, height })
 
     // resize if too wide
     const maxWidth = W.innerWidth * .7

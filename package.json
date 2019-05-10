@@ -21,7 +21,7 @@
   "scripts": {
     "start": "mspg build serve watch",
     "build": "NODE_ENV=production mspg build zip",
-    "build:serve": "NODE_ENV=production mspg build serve zip",
+    "prod": "NODE_ENV=production mspg build serve watch",
     "clean": "rm -rf public",
     "lint:css": "mspg lint css",
     "lint:html": "mspg lint html",
@@ -36,9 +36,6 @@
     "@mspg/transpile-stylus": "github:mspg/transpile-stylus"
   },
   "dependencies": {
-    "@babel/core": "^7.4.3",
-    "@babel/preset-env": "^7.4.3",
-    "@magic/test": "0.0.2",
-    "jimp": "^0.6.1"
+    "@magic/test": "0.0.12"
   }
 }
