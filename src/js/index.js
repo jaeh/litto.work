@@ -290,9 +290,7 @@ if (menuContainer) {
 var trigger = $('.about-page-trigger')[0]
 
 if (trigger) {
-  //3. listen to ClickEvents
   trigger.addEventListener("click", function (evt) {
-    //no event (reload, login)
     evt.preventDefault();
 
     cl.toggle(document.body, "about-visible")
