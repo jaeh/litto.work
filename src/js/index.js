@@ -74,7 +74,6 @@ const onload = par => e => {
     let height = tar.getBoundingClientRect().height
     let left = 0
     let top = 0
-    console.log({ width, height })
 
     // resize if too wide
     const maxWidth = W.innerWidth * .7
