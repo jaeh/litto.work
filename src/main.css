@@ -271,11 +271,12 @@ ul.nav
 /* About Page */
 
 .about-page
-  background-color rgb(0,0,0)
-  background-color rgba(0,0,0,0.8)
+  background-color rgb(51,51,51)
+  background-color rgba(51, 51, 51, 0.8)
   color #f2f2f2
   font-weight 300
   font-size 21px
+
 
   opacity 0
 
@@ -312,11 +313,15 @@ ul.nav
     color black
     padding 5px 10px
 
-body.about-visible .about-page
-  opacity 1
-  left 0
-  top 0
-  transition left 500ms, top 500ms, opacity 500ms
+body.about-visible 
+  .draggables
+    -webkit-filter blur(20px)
+
+  .about-page
+    opacity 1
+    left 0
+    top 0
+    transition left 500ms, top 500ms, opacity 500ms
 
 .about-page-content
   margin  0 10%
@@ -328,6 +333,16 @@ body.about-visible .about-page
   height
   text-align left
 
+  p
+    margin 0.5em 0
+
+  iframe
+    width 350px
+    height 355px
+    margin 30px auto
+    display block
+    overflow hidden
+
 .about-page-trigger
   position fixed
   left auto
@@ -338,8 +353,6 @@ body.about-visible .about-page
   z-index 1000000
   font-family sans-serif
   color black
-  background-color rgb(242, 242, 242)
-  background-color rgba(242, 242, 242,0.9)
 
 
 @media (min-width: 600px)
