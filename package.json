@@ -27,7 +27,9 @@
     "lint:html": "mspg lint html",
     "connect": "mspg connect",
     "publish": "NODE_ENV=production mspg publish",
-    "format": "f -w"
+    "format": "f -w",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "devDependencies": {
     "@mspg/core": "github:mspg/core",
@@ -36,6 +38,8 @@
     "@mspg/transpile-stylus": "github:mspg/transpile-stylus"
   },
   "dependencies": {
-    "@magic/test": "0.0.12"
-  }
+    "@magic/test": "0.0.12",
+    "snyk": "^1.189.0"
+  },
+  "snyk": true
 }
