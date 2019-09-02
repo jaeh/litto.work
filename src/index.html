@@ -2,36 +2,25 @@
   <block name="content">
     <div class="draggables">
 
-      <div class="drag" style="position: absolute; left: -100%; top: -100%;">
+
+    <div class="drag" style="position: absolute; left: -100%; top: -100%;">
+        <picture class="bg">
+            <source srcset="{{ WEB_ROOT }}2019/img/infographic.webp" type="image/webp">
+            <source srcset="{{ WEB_ROOT }}2019/img/infographic.jpg" type="image/jpg">
+            <img src="{{ WEB_ROOT }}2019/img/infographic.jpg">
+          </picture>
+    </div>
+
+    <div class="drag" style="position: absolute; left: -100%; top: -100%;">
+        <a href="https://www.facebook.com/events/2968908336666671">
+          <mixin name="link"></mixin>
+        </a>
+
         <picture class="bg">
           <source srcset="{{ WEB_ROOT }}2019/img/collage.webp" type="image/webp">
           <source srcset="{{ WEB_ROOT }}2019/img/collage.jpg" type="image/jpg">
           <img src="{{ WEB_ROOT }}2019/img/collage.jpg">
         </picture>
-    </div>
-
-    <div class="drag" style="position: absolute; left: -100%; top: -100%;">
-    <picture class="bg">
-        <source srcset="{{ WEB_ROOT }}2019/img/infographic.webp" type="image/webp">
-        <source srcset="{{ WEB_ROOT }}2019/img/infographic.jpg" type="image/jpg">
-        <img src="{{ WEB_ROOT }}2019/img/infographic.jpg">
-      </picture>
-    </div>
-
-    <div class="drag" style="position: absolute; left: -100%; top: -100%;">
-      <picture class="bg">
-        <source srcset="{{ WEB_ROOT }}2019/img/collage_06.webp" type="image/webp">
-        <source srcset="{{ WEB_ROOT }}2019/img/collage_06.jpg" type="image/jpg">
-        <img src="{{ WEB_ROOT }}2019/img/collage_06.jpg">
-      </picture>
-    </div>
-
-    <div class="drag" style="position: absolute; left: -100%; top: -100%;">
-      <picture class="bg">
-        <source srcset="{{ WEB_ROOT }}2019/img/sissi.webp" type="image/webp">
-        <source srcset="{{ WEB_ROOT }}2019/img/sissi.jpg" type="image/jpg">
-        <img src="{{ WEB_ROOT }}2019/img/sissi.jpg">
-      </picture>
     </div>
 
     <div class="drag" style="position: absolute; left: -100%; top: -100%;">
@@ -55,6 +44,13 @@
     </div>
 
     <div class="drag" style="position: absolute; left: -100%; top: -100%;">
+      <picture class="bg">
+        <source srcset="{{ WEB_ROOT }}2019/img/digitalskizze_01.jpg" type="image/jpg">
+        <img src="{{ WEB_ROOT }}2019/img/digitalskizze_01.jpg">
+      </picture>
+    </div>
+
+    <div class="drag" style="position: absolute; left: -100%; top: -100%;">
       <a href="https://shop.spreadshirt.at/litto/">
         <mixin name="link"></mixin>
       </a>
@@ -65,6 +61,7 @@
         <img src="{{ WEB_ROOT }}2019/img/mouse.gif">
       </picture>
     </div>
+
 
   </block>
 </extends>
