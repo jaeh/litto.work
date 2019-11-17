@@ -271,9 +271,7 @@ ul.nav
 /* About Page */
 
 .about-page
-  background-color rgb(51,51,51)
-  background-color rgba(51, 51, 51, 0.8)
-  color #f2f2f2
+  background-color rgba(242, 242, 242, 0.9)
   font-weight 300
   font-size 21px
 
@@ -290,7 +288,7 @@ ul.nav
   top 100%
   top 100vh
 
-  transition left 500ms, top 500ms, opacity 500ms
+  /*transition left 300ms, top 300ms, opacity 500ms*/
   position fixed
 
   overflow-y auto
@@ -309,29 +307,30 @@ ul.nav
     font-family 'Ubuntu', sans-serif
     font-style italic
     display inline-block
-    background-color #f2f2f2
     color black
     padding 5px 10px
 
 body.about-visible 
-  .draggables
-    -webkit-filter blur(20px)
+  /* .draggables
+    -webkit-filter blur(20px) */
 
   .about-page
     opacity 1
     left 0
     top 0
-    transition left 500ms, top 500ms, opacity 500ms
+    /*transition left 300ms, top 300ms, opacity 500ms */
 
 .about-page-content
   margin  0 10%
-  color black
   font-family 'Ubuntu', sans-serif
   font-style normal
   line-height 1.5
-  color white
-  height
+  font-size 25px
+  font-weight 400
+  color black
+  height 
   text-align left
+
 
   p
     margin 0.5em 0
@@ -342,6 +341,14 @@ body.about-visible
     margin 30px auto
     display block
     overflow hidden
+
+  .link
+    color 010101
+    text-decoration none
+    font-size .6em
+    line-height 1.9em
+    display inline-block
+    padding-right  10px
 
 .about-page-trigger
   position fixed

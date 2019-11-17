@@ -16,7 +16,7 @@ img{max-height:100%;max-width:100%;}
 a{color:#010101;text-decoration:none;}
 a .arrow{fill:#fff;}
 a .triangle{fill:#666;}
-a:hover{color:#05d6c6;}
+a:hover{color:#ff2291;}
 a:hover .triangle{fill:#010101;}
 ul.nav{font-size:1.8em;}
 ul.nav li{display:block;opacity:0;-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";filter:alpha(opacity=0);height:0;width:0;overflow:hidden;-webkit-transition:all 500ms;transition:all 500ms;}
@@ -59,14 +59,14 @@ ul.nav a{font-style:italic;padding:0 0.1em 0 0;}
 .pagination{margin-top:20px;margin-bottom:0;padding-left:30%;font-size:0.8em;}
 .link{color:#666;text-decoration:none;font-size:0.9em;line-height:1.9em;}
 /* About Page */
-.about-page{background-color:#333;background-color:rgba(51,51,51,0.8);color:#f2f2f2;font-weight:300;font-size:21px;opacity:0;-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";filter:alpha(opacity=0);height:100%;height:100vh;width:100%;width:100vw;left:100%;left:100vw;top:100%;top:100vh;-webkit-transition:left 500ms,top 500ms,opacity 500ms;transition:left 500ms,top 500ms,opacity 500ms;position:fixed;overflow-y:auto;/* image z-index gets incremented. we will assume nobody will hover 10.000 times without reloading */ z-index:10000;}
+.about-page{background-color:rgba(242,242,242,0.9);font-weight:300;font-size:21px;opacity:0;-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";filter:alpha(opacity=0);height:100%;height:100vh;width:100%;width:100vw;left:100%;left:100vw;top:100%;top:100vh;/*transition left 300ms,top 300ms,opacity 500ms*/ position:fixed;overflow-y:auto;/* image z-index gets incremented. we will assume nobody will hover 10.000 times without reloading */ z-index:10000;}
 .about-page h1{font-size:30px;font-weight:300;}
-.about-page .about-page nav a{text-decoration:none;font-family:'Ubuntu',sans-serif;font-style:italic;display:inline-block;background-color:#f2f2f2;color:#000;padding:5px 10px;}
-body.about-visible .draggables{-webkit-filter:blur(20px);}
-body.about-visible .about-page{opacity:1;-ms-filter:none;-webkit-filter:none;filter:none;left:0;top:0;-webkit-transition:left 500ms,top 500ms,opacity 500ms;transition:left 500ms,top 500ms,opacity 500ms;}
-.about-page-content{margin:0 10%;color:#000;font-family:'Ubuntu',sans-serif;font-style:normal;line-height:1.5;color:#fff;height text-align:left;}
+.about-page .about-page nav a{text-decoration:none;font-family:'Ubuntu',sans-serif;font-style:italic;display:inline-block;color:#000;padding:5px 10px;}
+body.about-visible .about-page{opacity:1;-ms-filter:none;-webkit-filter:none;filter:none;left:0;top:0;/*transition left 300ms,top 300ms,opacity 500ms */}
+.about-page-content{margin:0 10%;font-family:'Ubuntu',sans-serif;font-style:normal;line-height:1.5;font-size:25px;font-weight:400;color:#000;height text-align:left;}
 .about-page-content p{margin:0.5em 0;}
 .about-page-content iframe{width:350px;height:355px;margin:30px auto;display:block;overflow:hidden;}
+.about-page-content .link{color:10101;text-decoration:none;font-size:0.6em;line-height:1.9em;display:inline-block;padding-right:10px;}
 .about-page-trigger{position:fixed;left:auto;right:0;top:auto;bottom:0;padding:10px;z-index:1000000;font-family:sans-serif;color:#000;}
 @media (min-width:600px){.main .section{font-size:2vw;}}
 @media (min-width:700px){body{font-size:18px;}}
