@@ -1,0 +1,88 @@
+<extends src="page.html">
+  <block name="menu">
+    <ul class="nav">
+      <li class="active"><a href="{{WEB_ROOT}}business/">business</a></li>
+      <li><a href="{{ WEB_ROOT }}">art</a></li>
+    </ul>
+  </block>
+
+  <block name="content">
+    <div class="draggables">
+      <div class="drag" style="position: absolute; left: -100%; top: -100%;">
+        <a href="{{ WEB_ROOT }}2017/facedead/">
+          <mixin name="link"></mixin>
+        </a>
+
+        <picture class="bg">
+          <source srcset="{{ DIR }}img/litto_facedead.webp" type="image/webp">
+          <source srcset="{{ DIR }}img/litto_facedead.png" type="image/png">
+          <img src="{{ DIR }}img/litto_facedead.png">
+        </picture>
+      </div>
+
+      <div class="drag" style="position: absolute; left: -100%; top: -100%;">
+        <a href="{{ WEB_ROOT }}2017/facemeup/">
+          <mixin name="link"></mixin>
+        </a>
+
+        <picture class="bg">
+          <source srcset="{{ DIR }}img/litto_facemeup.webp" type="image/webp">
+          <source srcset="{{ DIR }}img/litto_facemeup.jpg" type="image/jpg">
+          <img src="{{ DIR }}img/litto_facemeup.jpg">
+        </picture>
+      </div>
+
+      <div class="drag" style="position: absolute; left: -100%; top: -100%;">
+        <picture class="bg">
+          <source srcset="{{ DIR }}img/litto_investment.webp" type="image/webp">
+          <source srcset="{{ DIR }}img/litto_investment.jpg" type="image/jpg">
+          <img src="{{ DIR }}img/litto_investment.jpg">
+        </picture>
+      </div>
+
+      <div class="drag" style="position: absolute; left: -100%; top: -100%;">
+        <a href="{{ WEB_ROOT }}2017/newreality/">
+          <mixin name="link"></mixin>
+        </a>
+
+        <picture class="bg">
+          <source srcset="{{ DIR }}img/litto_newreality.webp" type="image/webp">
+          <source srcset="{{ DIR }}img/litto_newreality.gif" type="image/gif">
+          <img src="{{ DIR }}img/litto_newreality.gif">
+        </picture>
+      </div>
+
+      <div class="drag" style="position: absolute; left: -100%; top: -100%;">
+        <picture class="bg">
+          <source srcset="{{ DIR }}img/litto_face.webp" type="image/webp">
+          <source srcset="{{ DIR }}img/litto_face.gif" type="image/gif">
+          <img src="{{ DIR }}img/litto_face.gif">
+        </picture>
+      </div>
+
+      <div class="drag" style="position: absolute; left: -100%; top: -100%;">
+        <a href="{{ WEB_ROOT }}2017/restrictedarea/">
+          <mixin name="link"></mixin>
+        </a>
+
+        <picture class="bg">
+          <source srcset="{{ DIR }}img/litto_restrictedarea.webp" type="image/webp">
+          <source srcset="{{ DIR }}img/litto_restrictedarea.jpg" type="image/jpg">
+          <img src="{{ DIR }}img/litto_restrictedarea.jpg">
+        </picture>
+      </div>
+
+      <div class="drag" style="position: absolute; left: -100%; top: -100%;">
+        <a href="{{ WEB_ROOT }}2017/dervenus/">
+          <mixin name="link"></mixin>
+        </a>
+
+        <picture class="bg">
+          <source srcset="{{ DIR }}img/litto_dervenus.webp" type="image/webp">
+          <source srcset="{{ DIR }}img/litto_dervenus.jpg" type="image/jpg">
+          <img src="{{ DIR }}img/litto_dervenus.jpg">
+        </picture>
+      </div>
+    </div>
+  </block>
+</extends>

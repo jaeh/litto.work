@@ -177,8 +177,14 @@ ul.nav
     display inline-block
 
     source, img
-      max-width 40vw
-      max-height 45vh
+      max-width 35vw
+      max-height 40vh
+  .bg2
+    display inline-block
+
+    source, img
+      max-width 20vw
+      max-height 20vh
 
   a
     position absolute
@@ -197,6 +203,9 @@ ul.nav
 
     .bg
       source, img
+        box-shadow 0px 0px 10px 0px rgba(0,0,0,.25)
+    .bg2
+      source, img 
         box-shadow 0px 0px 10px 0px rgba(0,0,0,.25)
 
 .videoWrapper
