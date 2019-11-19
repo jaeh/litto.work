@@ -126,7 +126,7 @@ ul.nav
     padding 0 $padding-side
 
     h3
-      padding $padding-side 0
+      /*padding $padding-side 0 */
 
     img
       margin .5em 0
@@ -248,7 +248,7 @@ ul.nav
 .content
   font-family 'Ubuntu', sans-serif
   font-style regular
-  color #555555
+  color $black
   line-height 1.5
 
   img
