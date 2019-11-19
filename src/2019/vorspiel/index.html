@@ -1,0 +1,53 @@
+<extends src="single.html">
+  <block name="menu">
+    <a class="backBtn" href="{{ WEB_ROOT }}">
+      <mixin name="pageLink"></mixin>
+    </a>
+  </block>
+
+  <block name="content">
+  <h2>Das Vorspiel</h2>
+  <div class="left">
+
+      <div class="videoWrapper">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/YTYhBzs00TQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+
+      <img src="{{ DIR }}img/vorspiel.jpg">
+      <img src="{{ DIR }}img/img01.jpg">
+      <img src="{{ DIR }}img/img02.jpg">
+      <img src="{{ DIR }}img/img03.jpg">
+
+    </div>
+
+    <div class="right">
+      <h3>PERFORM: DIGITAL IMAGE AND SOUND / ANALOGUE OBJECT</h3>
+
+      <div class="content">
+        <p>
+          <span class="bold uppercase">“Das Vorspiel”</span>
+           is an interactive audio- visual installation that can be perceived passive or actively via the Sexophon interface.
+The audience can choose to interfere with the piece and trigger the images and the sound by teasing and exploring - or just lean back and enjoy the abstract voyeuristic gaze and shifting soundscapes produced by the players.
+The Installation reacts to the movements and state of pleasure of it’s visitors.
+        </p>
+        <p class="ellipsis">...</p>
+      </div>
+
+      <div class='link'>
+
+        <p>
+          <a href="https://drawnsound.org" target="_blank" rel="nofollow noopener noreferrer">Music: Patrick K.-H.</a>
+        </p>
+
+        <p>
+          <a href="https://digitalekunst.ac.at/fuckreality/" target="_blank" rel="nofollow noopener noreferrer">Cooperation: Digital Class // University of Applied Arts Vienna</a>
+
+        </p>
+        <p>
+          <a href="https://www.kunstraum.net/en/Exhibitions" target="_blank" rel="nofollow noopener noreferrer">Exhibition @ Kunstraum Niederösterreich</a>
+        </p>
+      </div>
+    </div>
+  </div>
+  </block>
+</extends>
