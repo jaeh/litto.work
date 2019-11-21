@@ -1,0 +1,43 @@
+<extends src="single.html">
+  <block name="menu">
+    <a class="backBtn" href="{{ WEB_ROOT }}xxxx/">
+      <mixin name="pageLink"></mixin>
+    </a>
+  </block>
+
+  <block name="content">
+    <h2>FaceMeUp</h2>
+
+    <div class="left">
+      <div class="videoWrapper">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/1YV6F0BvAmA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <img src="{{ DIR }}img/litto_facemeup_selection.png" alt="" />
+      <img src="{{ DIR }}img/litto_facemeup_selection2.png" alt="" />
+    </div>
+
+    <div class="right">
+      <h3>A self portrait existing in an unspecified period of time</h3>
+
+      <div class="content">
+        <p>
+          <span class="bold uppercase">Single Frames</span>
+          <br>
+          digital art, stop motion<br>
+          DIN A3<br>
+          Augmented Reality
+        </p>
+
+        <p class="ellipsis">...</p>
+      </div>
+      <div class='link'>
+        <p>
+          <a href="http://www.ph-lion.com/" target="_blank" rel="nofollow noopener noreferrer">Music: PH Lion</a>
+        </p>
+        <p>
+          <a href="http://dniaustrii.eu/2017/Program_ENG.pdf" target="_blank" rel="nofollow noopener noreferrer">Exhibition Austrian Days in Gdańsk, Poland</a>
+        </p>
+      </div>
+    </div>
+  </block>
+</extends>
