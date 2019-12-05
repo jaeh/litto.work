@@ -39,7 +39,7 @@ h2
   letter-spacing .09em
   margin .5em $padding-side .2em
   padding 0 0 .2em
-  border-bottom 1px solid #666 
+  border-bottom 1px solid #666
 
 h3
   text-transform uppercase
@@ -206,7 +206,7 @@ ul.nav
       source, img
         box-shadow 0px 0px 10px 0px rgba(0,0,0,.25)
     .bg2
-      source, img 
+      source, img
         box-shadow 0px 0px 10px 0px rgba(0,0,0,.25)
 
 .videoWrapper
@@ -323,7 +323,7 @@ ul.nav
     color black
     padding 5px 10px
 
-body.about-visible 
+body.about-visible
   /* .draggables
     -webkit-filter blur(20px) */
 
@@ -338,10 +338,10 @@ body.about-visible
   font-family 'Ubuntu', sans-serif
   font-style normal
   line-height 1.5
-  font-size 28px
+  font-size 16px
   font-weight 400
   color $black
-  height 
+  padding 0 0 50px
   text-align left
 
 
@@ -379,13 +379,13 @@ body.about-visible
   .main
     .section
       font-size 2vw
-  .left 
+  .left
     margin-top 2.5%
 
-  .right 
+  .right
     margin-top 2.5%
 
-    
+
 
 
 @media (min-width: 700px)
@@ -411,3 +411,6 @@ body.about-visible
       padding 2.5% 5% 5% 2.5%
       width 50%
       float right
+
+  .about-page-content
+    font-size 28px
