@@ -65,12 +65,12 @@ ul.nav a{font-style:italic;padding:0 0.1em 0 0;}
 .about-page h1{font-size:30px;font-weight:300;}
 .about-page .about-page nav a{text-decoration:none;font-family:'Ubuntu',sans-serif;font-style:italic;display:inline-block;color:#000;padding:5px 10px;}
 body.about-visible .about-page{opacity:1;-ms-filter:none;-webkit-filter:none;filter:none;left:0;top:0;/*transition left 300ms,top 300ms,opacity 500ms */}
-.about-page-content{margin:0 10%;font-family:'Ubuntu',sans-serif;font-style:normal;line-height:1.5;font-size:28px;font-weight:400;color:#010101;height text-align:left;}
+.about-page-content{margin:0 10%;font-family:'Ubuntu',sans-serif;font-style:normal;line-height:1.5;font-size:16px;font-weight:400;color:#010101;padding:0 0 150px;text-align:left;}
 .about-page-content p{margin:0.5em 0;}
 .about-page-content iframe{width:350px;height:355px;margin:30px auto;display:block;overflow:hidden;}
 .about-page-content .link{color:10101;text-decoration:none;font-size:0.6em;line-height:1.9em;display:inline-block;padding-right:10px;}
 .about-page-trigger{position:fixed;left:auto;right:0;top:auto;bottom:0;padding:10px;z-index:1000000;font-family:sans-serif;color:#000;}
 @media (min-width:600px){.main .section{font-size:2vw;} .left{margin-top:2.5%;} .right{margin-top:2.5%;}}
 @media (min-width:700px){body{font-size:18px;}}
-@media (min-width:800px){.projects{display:inline-block;} .projects .project{float:left;width:31%;margin:0 1%;} .wrapper .left{padding:2.5% 2.5% 5% 5%;width:50%;float:left;} .wrapper .right{padding:2.5% 5% 5% 2.5%;width:50%;float:right;}}
+@media (min-width:800px){.projects{display:inline-block;} .projects .project{float:left;width:31%;margin:0 1%;} .wrapper .left{padding:2.5% 2.5% 5% 5%;width:50%;float:left;} .wrapper .right{padding:2.5% 5% 5% 2.5%;width:50%;float:right;} .about-page-content{font-size:28px;}}
 /*# sourceMappingURL=main.css.map */

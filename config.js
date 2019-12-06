@@ -11,7 +11,5 @@ module.exports = {
     JS,
   },
 
-  WEB_ROOT: '/litto.work/',
-
   year,
 }
