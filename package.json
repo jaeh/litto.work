@@ -36,6 +36,6 @@
     "@mspg/transpile-stylus": "github:mspg/transpile-stylus"
   },
   "dependencies": {
-    "@magic/test": "0.0.12"
+    "@magic/test": "0.1.0"
   }
 }
