@@ -173,6 +173,7 @@ ul.nav
 .drag
   position absolute
   z-index 0
+  transition left 500ms, top 500ms
 
   &.dragged
     transition none
@@ -183,6 +184,7 @@ ul.nav
     source, img
       max-width 35vw
       max-height 40vh
+
   .bg2
     display inline-block
 
