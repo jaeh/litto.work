@@ -2,13 +2,12 @@ const D = document
 const M = Math
 const W = window
 
-const $ = (str, par = D) => {
-  const isCl = str.indexOf('.') === 0
-  const isId = str.indexOf('#') === 0
+const $ = (str, par) => {
+  par = par || D
 
-  if (isCl) {
+  if (str.startsWith('.')) {
     return par.getElementsByClassName(str.substr(1, str.length))
-  } else if (isId) {
+  } else if (str.startsWith('#')) {
     return par.getElementById(str.substr(1, str.length))
   } else {
     return par.getElementsByTagName(str)
@@ -16,9 +15,9 @@ const $ = (str, par = D) => {
 }
 
 // global dom elements
-const draggableContainer = $('.draggables')[0]
-const draggables = $('.drag')
-const maxZIndex = draggables.length * 5
+const draggableContainer = $('#draggables')
+const drag = $('.drag', draggableContainer)
+const maxZIndex = drag.length * 5
 
 // global app state
 let dragged = false
@@ -104,7 +103,7 @@ const onload = par => e => {
   }
 }
 
-forEach(draggables, draggable => {
+forEach(drag, draggable => {
   const ran = M.random()
   const pos = {
     left: '100%',
@@ -166,7 +165,7 @@ const isOutOfBounds = e => (
   e.clientY <= 0
 )
 
-const drag = evt => {
+const onDrag = evt => {
   dragged = evt.currentTarget.parentNode
 
   cl.add(dragged, 'dragged')
@@ -186,17 +185,17 @@ const drag = evt => {
 
   dragged.style.transition = null
 
-  on(D, 'mousemove', mousemove)
-  on(D, 'mouseup', drop)
-  on(D, 'mouseout', dropIfOutOfBounds)
+  on(D, 'mousemove', onMousemove)
+  on(D, 'mouseup', onDrop)
+  on(D, 'mouseout', onDropIfOutOfBounds)
 }
 
-const drop = () => {
+const onDrop = () => {
   if (!dragged) {
     return
   }
 
-  forEach(draggables, draggable => {
+  forEach(drag, draggable => {
     cl.rm(draggable, 'dragged')
 
     if (draggable === dragged) {
@@ -213,13 +212,13 @@ const drop = () => {
   startPos = false
 }
 
-const dropIfOutOfBounds = e => {
+const onDropIfOutOfBounds = e => {
   if (isOutOfBounds(e)) {
-    drop(e)
+    onDrop(e)
   }
 }
 
-const mousemove = evt => {
+const onMousemove = evt => {
   if (dragged) {
     const max = {
       left: W.innerWidth - dragged.clientWidth,
@@ -246,11 +245,11 @@ const mousemove = evt => {
 }
 
 W.onload = () => {
-  forEach(draggables, draggable => {
+  forEach(drag, draggable => {
     const img = $('.bg', draggable)[0]
     if (img) {
       on(img, 'dragstart', doNothing)
-      on(img, 'mousedown', drag)
+      on(img, 'mousedown', onDrag)
 
       on(img, "touchstart", touchHandler, true)
       on(img, "touchmove", touchHandler, true)
@@ -294,10 +293,10 @@ if (menuContainer) {
 const trigger = $('.about-page-trigger')[0]
 
 if (trigger) {
-  on(trigger, "click", evt => {
-    evt.preventDefault();
+  on(trigger, "click", e => {
+    e.preventDefault();
 
-    cl.toggle(document.body, "about-visible")
+    cl.toggle(D.body, "about-visible")
 
     return false
   })

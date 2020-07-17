@@ -167,7 +167,7 @@ ul.nav
   bottom 10px
   z-index 1000000
 
-.draggables
+#draggables
   user-select none
 
 .drag
@@ -327,7 +327,7 @@ ul.nav
     padding 5px 10px
 
 body.about-visible
-  /* .draggables
+  /* #draggables
     -webkit-filter blur(20px) */
 
   .about-page
