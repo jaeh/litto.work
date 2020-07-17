@@ -34,8 +34,5 @@
     "@mspg/transpile-babel": "github:mspg/transpile-babel#mjs",
     "@mspg/transpile-posthtml": "github:mspg/transpile-posthtml#mjs",
     "@mspg/transpile-stylus": "github:mspg/transpile-stylus#mjs"
-  },
-  "dependencies": {
-    "@magic/test": "0.0.12"
   }
 }
