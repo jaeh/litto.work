@@ -1,6 +1,3 @@
-@import 'nib'
-global-reset()
-
 *
   box-sizing border-box
 
@@ -16,6 +13,7 @@ body
   height 100vh
   width 100%
   width 100vw
+  padding 0
 
   &.page
     overflow hidden
@@ -70,6 +68,11 @@ a
 
     .triangle
       fill $link-hover-color-svg
+
+ul
+  line-height 1
+  margin 0
+  padding 0
 
 ul.nav
   font-size 1.8em
