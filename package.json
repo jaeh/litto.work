@@ -4,6 +4,7 @@
   "author": "Wizards & Witches",
   "license": "AGPL-3.0",
   "private": true,
+  "type": "module",
   "contributors": [
     {
       "name": "jascha ehrenreich",
@@ -20,20 +21,19 @@
   },
   "scripts": {
     "start": "mspg build serve watch",
-    "build": "NODE_ENV=production mspg build zip",
+    "build": "NODE_ENV=production mspg build",
     "prod": "NODE_ENV=production mspg build serve watch",
     "clean": "rm -rf public",
     "lint:css": "mspg lint css",
     "lint:html": "mspg lint html",
     "connect": "mspg connect",
-    "publish": "NODE_ENV=production mspg publish",
-    "format": "f -w"
+    "publish": "NODE_ENV=production mspg publish"
   },
   "devDependencies": {
-    "@mspg/core": "github:mspg/core",
-    "@mspg/transpile-babel": "github:mspg/transpile-babel",
-    "@mspg/transpile-posthtml": "github:mspg/transpile-posthtml",
-    "@mspg/transpile-stylus": "github:mspg/transpile-stylus"
+    "@mspg/core": "github:mspg/core#mjs",
+    "@mspg/transpile-babel": "github:mspg/transpile-babel#mjs",
+    "@mspg/transpile-posthtml": "github:mspg/transpile-posthtml#mjs",
+    "@mspg/transpile-stylus": "github:mspg/transpile-stylus#mjs"
   },
   "dependencies": {
     "@magic/test": "0.0.12"
