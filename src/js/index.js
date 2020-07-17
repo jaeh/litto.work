@@ -156,8 +156,8 @@ const doNothing = (e) => {
 
 const getPos = e => parseInt(e.replace('%', ''))
 
-const percentFromPixels = (direction, px) => (px / W[`inner${direction}`]) * 100
-const pixelsFromPercent = (direction, pc) => (pc * W[`inner${direction}`]) / 100
+const percentFromPixels = (dir, px) => (px / W[`inner${dir}`]) * 100
+const pixelsFromPercent = (dir, pc) => (pc * W[`inner${dir}`]) / 100
 
 const isOutOfBounds = e => (
   e.clientX >= W.innerWidth ||
@@ -291,10 +291,10 @@ if (menuContainer) {
 
 // About page
 
-var trigger = $('.about-page-trigger')[0]
+const trigger = $('.about-page-trigger')[0]
 
 if (trigger) {
-  on(trigger, "click", function (evt) {
+  on(trigger, "click", evt => {
     evt.preventDefault();
 
     cl.toggle(document.body, "about-visible")
