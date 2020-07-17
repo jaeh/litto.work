@@ -99,7 +99,6 @@ const onload = par => e => {
 
     par.style.left = left
     par.style.top = top
-    par.style.transition = 'left 500ms, top 500ms'
   }
 }
 
@@ -183,8 +182,6 @@ const onDrag = evt => {
   }
   dragged.style.opacity = 0.8
 
-  dragged.style.transition = null
-
   on(D, 'mousemove', onMousemove)
   on(D, 'mouseup', onDrop)
   on(D, 'mouseout', onDropIfOutOfBounds)
@@ -206,7 +203,6 @@ const onDrop = () => {
   })
 
   dragged.style.opacity = 1
-  dragged.style.transition = 'left 500ms, top 500ms'
 
   dragged = false
   startPos = false
