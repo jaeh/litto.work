@@ -1,11 +1,5 @@
-html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-weight:inherit;font-style:inherit;font-family:inherit;font-size:100%;vertical-align:baseline;}
-body{line-height:1;color:#000;background:#fff;}
-ol,ul{list-style:none;}
-table{border-collapse:separate;border-spacing:0;vertical-align:middle;}
-caption,th,td{text-align:left;font-weight:normal;vertical-align:middle;}
-a img{border:none;}
-*{-webkit-box-sizing:border-box;box-sizing:border-box;}
-body{color:#010101;font-family:Ubuntu,sans-serif;font-size:15px;line-height:1.2;max-width:1200px;margin:0 auto;background-color:#f2f2f2;height:100%;height:100vh;width:100%;width:100vw;}
+*{box-sizing:border-box;}
+body{color:#010101;font-family:Ubuntu,sans-serif;font-size:15px;line-height:1.2;max-width:1200px;margin:0 auto;background-color:#f2f2f2;height:100%;height:100vh;width:100%;width:100vw;padding:0;}
 body.page{overflow:hidden;}
 body.about-visible{overflow:hidden;}
 h1,h2{margin:0 0 1em;font-style:italic;margin-bottom:10%;}
@@ -18,13 +12,14 @@ a .arrow{fill:#fff;}
 a .triangle{fill:#000;}
 a:hover{color:#0f0;}
 a:hover .triangle{fill:#555;}
+ul{line-height:1;margin:0;padding:0;}
 ul.nav{font-size:1.8em;}
-ul.nav li{display:block;opacity:0;-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";filter:alpha(opacity=0);height:0;width:0;overflow:hidden;-webkit-transition:all 500ms;transition:all 500ms;}
-ul.nav li.active{opacity:1;-ms-filter:none;-webkit-filter:none;filter:none;width:auto;height:auto;}
+ul.nav li{display:block;opacity:0;height:0;width:0;overflow:hidden;transition:all 500ms;}
+ul.nav li.active{opacity:1;width:auto;height:auto;}
 ul.nav li.active a{display:inline-block;}
 ul.nav li.active a::before{content:"";border-top:3px solid #010101;display:block;margin:0 0 0 50%;right:-4px;position:relative;}
 ul.nav li.active .border{height:3px;width:50%;background-color:#010101;float:right;}
-ul.nav.show li{opacity:1;-ms-filter:none;-webkit-filter:none;filter:none;height:auto;width:auto;-webkit-transition:all 500ms;transition:all 500ms;}
+ul.nav.show li{opacity:1;height:auto;width:auto;transition:all 500ms;}
 ul.nav a{font-style:italic;padding:0 0.1em 0 0;}
 .wrapper{display:inline-block;padding-bottom:3em;}
 .wrapper .left,.wrapper .right{color:#333;/* margin:.5em 0;*/ padding:0 5%;}
@@ -37,15 +32,15 @@ ul.nav a{font-style:italic;padding:0 0.1em 0 0;}
 .footer.main{top:auto;bottom:10px;z-index:1000000;}
 .draggables{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;}
 .drag{position:absolute;z-index:0;}
-.drag.dragged{-webkit-transition:none;transition:none;}
+.drag.dragged{transition:none;}
 .drag .bg{display:inline-block;}
 .drag .bg source,.drag .bg img{max-width:35vw;max-height:40vh;}
 .drag .bg2{display:inline-block;}
 .drag .bg2 source,.drag .bg2 img{max-width:20vw;max-height:20vh;}
-.drag a{position:absolute;right:0;top:0;opacity:0;-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";filter:alpha(opacity=0);height:0;width:0;-webkit-transition:opacity 500ms;transition:opacity 500ms;}
-.drag.dropped a{opacity:1;-ms-filter:none;-webkit-filter:none;filter:none;height:43px;width:43px;}
-.drag.dropped .bg source,.drag.dropped .bg img{-webkit-box-shadow:0px 0px 10px 0px rgba(0,0,0,0.25);box-shadow:0px 0px 10px 0px rgba(0,0,0,0.25);}
-.drag.dropped .bg2 source,.drag.dropped .bg2 img{-webkit-box-shadow:0px 0px 10px 0px rgba(0,0,0,0.25);box-shadow:0px 0px 10px 0px rgba(0,0,0,0.25);}
+.drag a{position:absolute;right:0;top:0;opacity:0;height:0;width:0;transition:opacity 500ms;}
+.drag.dropped a{opacity:1;height:43px;width:43px;}
+.drag.dropped .bg source,.drag.dropped .bg img{box-shadow:0px 0px 10px 0px rgba(0,0,0,0.25);}
+.drag.dropped .bg2 source,.drag.dropped .bg2 img{box-shadow:0px 0px 10px 0px rgba(0,0,0,0.25);}
 .videoWrapper{height:0;position:relative;padding-bottom:56.25% /* 16:9 */;}
 .videoWrapper iframe{background-color:#f2f2f2;height:100%;left:0;position:absolute;top:0;width:100%;}
 .pageLink{height:45px;width:45px;right:0;top:0;}
@@ -61,10 +56,10 @@ ul.nav a{font-style:italic;padding:0 0.1em 0 0;}
 .pagination{margin-top:20px;margin-bottom:0;padding-left:30%;font-size:0.8em;}
 .link{color:#666;text-decoration:none;font-size:0.9em;line-height:1.9em;}
 /* About Page */
-.about-page{background-color:rgba(242,242,242,0.9);font-weight:300;font-size:21px;opacity:0;-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";filter:alpha(opacity=0);height:100%;height:100vh;width:100%;width:100vw;left:100%;left:100vw;top:100%;top:100vh;/*transition left 300ms,top 300ms,opacity 500ms*/ position:fixed;overflow-y:auto;/* image z-index gets incremented. we will assume nobody will hover 10.000 times without reloading */ z-index:10000;}
+.about-page{background-color:rgba(242,242,242,0.9);font-weight:300;font-size:21px;opacity:0;height:100%;height:100vh;width:100%;width:100vw;left:100%;left:100vw;top:100%;top:100vh;/*transition left 300ms,top 300ms,opacity 500ms*/ position:fixed;overflow-y:auto;/* image z-index gets incremented. we will assume nobody will hover 10.000 times without reloading */ z-index:10000;}
 .about-page h1{font-size:30px;font-weight:300;}
 .about-page .about-page nav a{text-decoration:none;font-family:'Ubuntu',sans-serif;font-style:italic;display:inline-block;color:#000;padding:5px 10px;}
-body.about-visible .about-page{opacity:1;-ms-filter:none;-webkit-filter:none;filter:none;left:0;top:0;/*transition left 300ms,top 300ms,opacity 500ms */}
+body.about-visible .about-page{opacity:1;left:0;top:0;/*transition left 300ms,top 300ms,opacity 500ms */}
 .about-page-content{margin:0 10%;font-family:'Ubuntu',sans-serif;font-style:normal;line-height:1.5;font-size:16px;font-weight:400;color:#010101;padding:0 0 150px;text-align:left;}
 .about-page-content p{margin:0.5em 0;}
 .about-page-content iframe{width:350px;height:355px;margin:30px auto;display:block;overflow:hidden;}
