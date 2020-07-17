@@ -1,14 +1,14 @@
-const HTML = require('@mspg/transpile-posthtml')
-const CSS = require('@mspg/transpile-stylus')
-const JS = require('@mspg/transpile-babel')
+import html from '@mspg/transpile-posthtml'
+import css from '@mspg/transpile-stylus'
+import js from '@mspg/transpile-babel'
 
 const year = new Date().getFullYear()
 
-module.exports = {
+export default {
   TRANSPILERS: {
-    HTML,
-    CSS,
-    JS,
+    html,
+    css,
+    js,
   },
 
   year,
