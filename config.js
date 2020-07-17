@@ -11,5 +11,7 @@ export default {
     js,
   },
 
+  WEB_ROOT: '/litto.work/',
+
   year,
 }
