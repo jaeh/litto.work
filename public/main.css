@@ -31,7 +31,7 @@ ul.nav a{font-style:italic;padding:0 0.1em 0 0;}
 .header.main{top:10px;z-index:10000;}
 .footer.main{top:auto;bottom:10px;z-index:1000000;}
 #draggables{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;}
-.drag{position:absolute;z-index:0;}
+.drag{position:absolute;z-index:0;transition:left 500ms,top 500ms;}
 .drag.dragged{transition:none;}
 .drag .bg{display:inline-block;}
 .drag .bg source,.drag .bg img{max-width:35vw;max-height:40vh;}
