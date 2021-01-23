@@ -2,12 +2,13 @@
   <block name="menu">
     <ul class="nav">
       <li class="active"><a href="{{WEB_ROOT}}2018/">2018</a></li>
-      <li><a href="{{ WEB_ROOT }}">2020</a></li>
+      <li><a href="{{ WEB_ROOT }}">2021</a></li>
+      <li><a href="{{ WEB_ROOT }}2020/">2020</a></li>
       <li><a href="{{ WEB_ROOT }}2019/">2019</a></li>
     </ul>
   </block>
   <block name="content">
-    <div id="draggables">"
+    <div id="draggables">
 
       <div class="drag" style="position: absolute; left: -100%; top: -100%">
         <picture class="bg bg2">
@@ -18,12 +19,6 @@
       <div class="drag" style="position: absolute; left: -100%; top: -100%">
         <picture class="bg">
           <img src="{{ DIR }}img/litto_evocell.gif">
-        </picture>
-      </div>
-
-      <div class="drag" style="position: absolute; left: -100%; top: -100%">
-        <picture class="bg">
-          <img src="{{ DIR }}img/litto_singularity.jpg">
         </picture>
       </div>
 
@@ -83,6 +78,15 @@
       <picture class="bg">
         <img src="{{ DIR }}img/litto_realmirror.png">
       </picture>
+    </div>
+
+    <div class="drag" style="position: absolute; left: -100%; top: -100%">
+        <a href="{{ WEB_ROOT }}2019/distinctRealities/">
+        <mixin name="link"></mixin>
+        </a>
+        <picture class="bg">
+          <img src="{{ DIR }}img/litto_singularity.jpg">
+        </picture>
     </div>
 
     </div>
