@@ -1,40 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <block name="title">
-      <title>litto @ work</title>
+
+<head>
+  <meta charset="utf-8">
+  <block name="title">
+    <title>litto @ work</title>
+  </block>
+  <block name="meta"></block>
+  <link rel="icon" href="{{ WEB_ROOT }}favicon.ico">
+  <meta name="description" content="litto's portfolio">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <link ref="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Ubuntu">
+  <link rel="stylesheet" type="text/css" href="{{ WEB_ROOT }}main.css">
+  <block name="style"></block>
+</head>
+
+<body class="page">
+  <div class="header main">
+    <block name="menu">
+      <ul class="nav">
+        <li class="active"><a href="{{ WEB_ROOT }}">2021</a></li>
+        <li><a href="{{ WEB_ROOT }}2020/">2020</a></li>
+        <li><a href="{{ WEB_ROOT }}2019/">2019</a></li>
+        <li><a href="{{ WEB_ROOT }}2018/">2018</a></li>
+        <li><a href="{{ WEB_ROOT }}xxxx/">201&lt;</a></li>
+      </ul>
     </block>
-    <block name="meta"></block>
-    <link rel="icon" href="{{ WEB_ROOT }}favicon.ico">
-    <meta name="description" content="litto's portfolio">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <link ref="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Ubuntu">
-    <link rel="stylesheet" type="text/css" href="{{ WEB_ROOT }}main.css">
-    <block name="style"></block>
-  </head>
-  <body class="page">
-    <div class="header main">
-      <block name="menu">
-        <ul class="nav">
-          <li class="active"><a href="{{ WEB_ROOT }}">2021</a></li>
-          <li><a href="{{ WEB_ROOT }}2020/">2020</a></li>
-          <li><a href="{{ WEB_ROOT }}2019/">2019</a></li>
-          <li><a href="{{ WEB_ROOT }}2018/">2018</a></li>
-          
-        </ul>
-      </block>
-    </div>
+  </div>
 
-    <div class="wrapper main">
-      <block name="content">
-        <div>no content</div>
-      </block>
-    </div>
+  <div class="wrapper main">
+    <block name="content">
+      <div>no content</div>
+    </block>
+  </div>
 
-    <include src="about-page.html"></include>
+  <include src="about-page.html"></include>
 
-    <script type="text/javascript" async defer src="{{ WEB_ROOT }}js/index.js"></script>
-    <block name="script"></block>
-  </body>
+  <script type="text/javascript" async defer src="{{ WEB_ROOT }}js/index.js"></script>
+  <block name="script"></block>
+</body>
+
 </html>
